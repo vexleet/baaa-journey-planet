@@ -2,6 +2,8 @@ import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
 import MyComponent from './components/MyComponent.jsx';
+import './firebase.js';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,6 +24,9 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
+        <Link to="/login">
+          <button>Go to Login</button>
+        </Link>
       </div>
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </div>
