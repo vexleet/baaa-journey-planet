@@ -1,0 +1,15 @@
+import { Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useTokenContext } from '@/context/TokenContext.jsx';
+
+const GuestGuard = ({ outlet }) => {
+  const { token } = useTokenContext();
+
+  return token ? <Navigate to="/" /> : outlet;
+};
+
+GuestGuard.propTypes = {
+  outlet: PropTypes.node.isRequired
+};
+
+export default GuestGuard;

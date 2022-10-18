@@ -1,22 +1,18 @@
 import { useState } from 'react';
-import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { useTokenContext } from '@/context/TokenContext.jsx';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
-const Login = () => {
+const Register = () => {
   const authentication = getAuth();
-  const { setToken } = useTokenContext();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const submitLogin = async () => {
+  const submitRegister = async () => {
     try {
-      const response = await signInWithEmailAndPassword(authentication, email, password);
-      const token = await response.user.getIdToken();
+      const response = await createUserWithEmailAndPassword(authentication, email, password);
 
-      setToken(token);
+      console.log(response);
     } catch (e) {
-      //TODO SHOW ERROR
       console.log(e);
     }
   };
@@ -41,9 +37,9 @@ const Login = () => {
           type="password"
         />
       </div>
-      <button onClick={submitLogin}>log in</button>
+      <button onClick={submitRegister}>Register</button>
     </div>
   );
 };
 
-export default Login;
+export default Register;
