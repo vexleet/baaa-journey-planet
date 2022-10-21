@@ -42,7 +42,9 @@ const Register = () => {
 
   return (
     <div className="register-wrapper">
-      <GoBackArrow goTo="/login" />
+      <div style={{ marginBottom: 20, alignSelf: 'flex-start' }}>
+        <GoBackArrow goTo="/login" />
+      </div>
 
       <p className="register-title">Lets get you started on your journey around the world!</p>
 
