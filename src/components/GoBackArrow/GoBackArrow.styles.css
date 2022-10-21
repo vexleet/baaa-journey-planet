@@ -1,0 +1,13 @@
+.goto-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.goto-box {
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

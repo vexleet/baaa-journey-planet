@@ -1,0 +1,17 @@
+.textfield-label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.textfield-input {
+  display: block;
+  border-radius: 100px;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  color: #000;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}

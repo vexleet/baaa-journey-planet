@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import React from 'react';
 import App from '@/App.jsx';
-import Login from '@/pages/Login.jsx';
-import Register from '@/pages/Register.jsx';
+import Login from '@/pages/Login/Login.jsx';
+import Register from '@/pages/Register/Register.jsx';
 import AuthGuard from '@/guards/AuthGuard.jsx';
 import GuestGuard from '@/guards/GuestGuard.jsx';
 
