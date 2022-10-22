@@ -1,13 +1,24 @@
 import { useEffect, useState } from 'react';
-import { getCategories } from '@/services/categories.js';
+import { addCategories, getCategories } from '@/services/categories.js';
 import CategoryChoose from '@/pages/ChooseCategories/subcomponents/CategoryChoose.jsx';
+import './ChooseCategories.styles.css';
+import GoBackArrow from '@/components/GoBackArrow/GoBackArrow.jsx';
+import { useTokenContext } from '@/context/TokenContext.jsx';
+import { getAuth } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const ChooseCategories = () => {
+  const authentication = getAuth();
+
+  const { deleteToken } = useTokenContext();
+
   const [countries, setCountries] = useState([]);
   const [activities, setActivities] = useState([]);
   const [places, setPlaces] = useState([]);
 
-  const [, setSelectedCountries] = useState([]);
+  const [selectedCountries, setSelectedCountries] = useState([]);
+  const [selectedActivities, setSelectedActivities] = useState([]);
+  const [selectedPlaces, setSelectedPlaces] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -19,29 +30,53 @@ const ChooseCategories = () => {
     })();
   }, []);
 
+  const savePreferences = async () => {
+    const response = await addCategories(
+      {
+        countries: selectedCountries,
+        places: selectedPlaces,
+        activities: selectedActivities
+      },
+      authentication.currentUser
+    );
+
+    if (response) {
+      toast('Preferences saved successfully', { type: 'success' });
+      //  TODO REDIRECT TO /
+    } else {
+      toast('Something went wrong!', { type: 'error' });
+    }
+  };
+
   return (
-    <>
-      <h1>im ctagories page</h1>
+    <div className="choose-categories-wrapper">
+      <GoBackArrow onClick={deleteToken} />
+
+      <p className="choose-categories-title">Tell us what you like!</p>
+      <p className="choose-categories-title" style={{ marginBottom: 30 }}>
+        Choose up to 3 words in every category.
+      </p>
 
       <CategoryChoose
         categories={countries}
         onCategoryPress={setSelectedCountries}
         title="Countries I would like to visit"
       />
-      {/*{countries.map((x) => (*/}
-      {/*  <Chip color="red" key={x}>*/}
-      {/*    {x}*/}
-      {/*  </Chip>*/}
-      {/*))}*/}
-      <hr />
-      {activities.map((x) => (
-        <h1 key={x}>{x}</h1>
-      ))}
-      <hr />
-      {places.map((x) => (
-        <h1 key={x}>{x}</h1>
-      ))}
-    </>
+
+      <CategoryChoose
+        categories={places}
+        onCategoryPress={setSelectedPlaces}
+        title="Places I can relax at"
+      />
+
+      <CategoryChoose
+        categories={activities}
+        onCategoryPress={setSelectedActivities}
+        title="Activities I enjoy to do"
+      />
+
+      <button onClick={savePreferences}>Submit</button>
+    </div>
   );
 };
 

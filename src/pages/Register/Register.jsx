@@ -4,9 +4,12 @@ import TextField from '@/components/TextField/TextField.jsx';
 import { toast } from 'react-toastify';
 import './Register.styles.css';
 import GoBackArrow from '@/components/GoBackArrow/GoBackArrow.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const authentication = getAuth();
+
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -43,7 +46,7 @@ const Register = () => {
   return (
     <div className="register-wrapper">
       <div style={{ marginBottom: 20, alignSelf: 'flex-start' }}>
-        <GoBackArrow goTo="/login" />
+        <GoBackArrow onClick={() => navigate('/login')} />
       </div>
 
       <p className="register-title">Lets get you started on your journey around the world!</p>

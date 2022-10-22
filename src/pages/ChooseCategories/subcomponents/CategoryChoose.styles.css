@@ -1,0 +1,14 @@
+.chips-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5px;
+  row-gap: 10px;
+}
+
+.chip-wrapper {
+  flex: 1;
+}
+
+/*.chip-wrapper:not(:last-of-type) {*/
+/*  margin-right: 10px;*/
+/*}*/

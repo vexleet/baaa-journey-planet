@@ -1,19 +1,16 @@
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './GoBackArrow.styles.css';
 
-const GoBackArrow = ({ goTo }) => {
+const GoBackArrow = ({ onClick }) => {
   return (
-    <Link to={goTo} className="goto-link">
-      <div className="goto-box">
-        <p>{'<'}</p>
-      </div>
-    </Link>
+    <div onClick={onClick} className="goto-box">
+      <p>{'<'}</p>
+    </div>
   );
 };
 
 GoBackArrow.propTypes = {
-  goTo: PropTypes.string.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export default GoBackArrow;

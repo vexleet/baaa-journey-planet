@@ -3,4 +3,5 @@
   padding: 4px 12px;
   text-align: center;
   display: inline-block;
+  box-sizing: border-box;
 }

@@ -1,26 +1,44 @@
 import PropTypes from 'prop-types';
 import Chip from '@/components/Chip/Chip.jsx';
 import { useEffect, useState } from 'react';
+import './CategoryChoose.styles.css';
 
 const maxCategories = 3;
 
 const CategoryChoose = ({ categories, onCategoryPress, title }) => {
-  const [selectedCategory, setSelectedCategory] = useState([]);
-  const [hasMaxCategories, setHasMaxCategories] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
-    const isMaxCategories = selectedCategory.length === maxCategories;
+    onCategoryPress(selectedCategories);
+  }, [selectedCategories]);
 
-    if (!isMaxCategories) {
-      onCategoryPress(selectedCategory);
-    }
-
-    setHasMaxCategories(isMaxCategories);
-  }, [selectedCategory]);
+  const isMaxCategories = () => {
+    return selectedCategories.length === maxCategories;
+  };
 
   const selectCategory = (category) => {
-    if (!hasMaxCategories) {
-      setSelectedCategory((prevState) => [...prevState, category]);
+    setSelectedCategories((prevState) => [...prevState, category]);
+  };
+
+  const deselectCategory = (category) => {
+    const indexOfCategory = selectedCategories.indexOf(category);
+
+    const selectedCategoriesCopy = selectedCategories.slice();
+    selectedCategoriesCopy.splice(indexOfCategory, 1);
+
+    setSelectedCategories(selectedCategoriesCopy);
+  };
+
+  const isSelectedCategory = (category) => {
+    return selectedCategories.includes(category);
+  };
+
+  const toggleCategory = (category) => {
+    if (isSelectedCategory(category)) {
+      deselectCategory(category);
+    }
+    if (!isSelectedCategory(category) && !isMaxCategories()) {
+      selectCategory(category);
     }
   };
 
@@ -28,11 +46,15 @@ const CategoryChoose = ({ categories, onCategoryPress, title }) => {
     <div>
       <p>{title}</p>
 
-      {categories.map((category) => (
-        <div key={category} onClick={() => selectCategory(category)}>
-          <Chip color={hasMaxCategories ? 'red' : 'blue'}>{category}</Chip>
-        </div>
-      ))}
+      <div className="chips-wrapper">
+        {categories.map((category) => (
+          <div className="chip-wrapper" key={category} onClick={() => toggleCategory(category)}>
+            <Chip className="w-100" color={isSelectedCategory(category) ? 'red' : 'blue'}>
+              {category}
+            </Chip>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
