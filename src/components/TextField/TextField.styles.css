@@ -15,3 +15,17 @@
   box-sizing: border-box;
   margin-bottom: 12px;
 }
+
+.textfield-textarea {
+  display: block;
+  border-radius: 20px;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  color: #000;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  max-width: 100%;
+}
