@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { useTokenContext } from '@/context/TokenContext.jsx';
 import './Login.styles.css';
 import GoogleLoginButton from '@/components/GoogleLoginButton/GoogleLoginButton.jsx';
 import TextField from '@/components/TextField/TextField.jsx';
@@ -8,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
   const authentication = getAuth();
-  const { setToken } = useTokenContext();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,10 +15,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await signInWithEmailAndPassword(authentication, email, password);
-      const token = await response.user.getIdToken();
-
-      setToken(token);
+      await signInWithEmailAndPassword(authentication, email, password);
     } catch (e) {
       //TODO SHOW ERROR
       console.log(e);

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useTokenContext } from '@/context/TokenContext.jsx';
 
 const GuestGuard = ({ outlet }) => {
-  const { token } = useTokenContext();
+  const { user } = useTokenContext();
 
-  return token ? <Navigate to="/" /> : outlet;
+  return user ? <Navigate to="/" /> : outlet;
 };
 
 GuestGuard.propTypes = {

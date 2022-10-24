@@ -1,49 +1,38 @@
-import { createContext, useContext, useState } from 'react';
-import jwtDecode from 'jwt-decode';
+import { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 
 const TokenContext = createContext({
-  setToken: (userToken) => {
-    return userToken;
-  },
-  token: null,
-  decodedToken: null,
+  user: null,
   deleteToken: () => {
     return;
   }
 });
 
-const TOKEN = 'TOKEN';
-
 export const TokenProvider = ({ children }) => {
-  const getToken = () => localStorage.getItem(TOKEN);
+  const authentication = getAuth();
 
-  const decodeToken = (token) => {
-    if (token) {
-      return jwtDecode(token);
-    }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(authentication, (currentUser) => {
+      console.log('Auth', currentUser);
+      setUser(currentUser);
+    });
 
-    return null;
-  };
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-  const [token, setToken] = useState(getToken());
+  const [user, setUser] = useState(null);
 
-  const saveToken = (userToken) => {
-    localStorage.setItem(TOKEN, userToken);
-    setToken(userToken);
-  };
-
-  const deleteToken = () => {
-    localStorage.removeItem(TOKEN);
-    setToken(null);
+  const deleteToken = async () => {
+    await signOut(authentication);
   };
 
   return (
     <TokenContext.Provider
       value={{
-        setToken: saveToken,
-        token,
-        decodedToken: decodeToken(token),
+        user,
         deleteToken
       }}>
       {children}

@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const MyComponent = (props) => {
-  return <h1>{props.message} QWE</h1>;
+  return (
+    <h1>
+      {props.message} <Link to="/create-ping">QWE</Link>
+    </h1>
+  );
 };
 
 MyComponent.propTypes = {

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useTokenContext } from '@/context/TokenContext.jsx';
 
 const AuthGuard = ({ outlet }) => {
-  const { token } = useTokenContext();
+  const { user } = useTokenContext();
 
-  return token ? outlet : <Navigate to="/login" />;
+  return user ? outlet : <Navigate to="/login" />;
 };
 
 AuthGuard.propTypes = {

@@ -1,13 +1,10 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useEffect } from 'react';
-import { useTokenContext } from '@/context/TokenContext.jsx';
 import './GoogleLoginButton.styles.css';
 
 const GoogleLoginButton = () => {
   const authentication = getAuth();
   const googleProvider = new GoogleAuthProvider();
-
-  const { setToken } = useTokenContext();
 
   useEffect(() => {
     googleProvider.setCustomParameters({ prompt: 'select_account' });
@@ -15,10 +12,7 @@ const GoogleLoginButton = () => {
 
   const continueWithGoogle = async () => {
     try {
-      const response = await signInWithPopup(authentication, googleProvider);
-      const token = await response.user.getIdToken();
-
-      setToken(token);
+      await signInWithPopup(authentication, googleProvider);
     } catch (e) {
       console.log(e);
     }

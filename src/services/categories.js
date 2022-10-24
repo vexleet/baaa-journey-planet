@@ -12,15 +12,21 @@ export const getCategories = async () => {
   return collectionDocumentSnapshot.data();
 };
 
+export const getUserCategory = async (currentUser) => {
+  const db = getFirestore(firebase);
+
+  const userCategoryReference = doc(db, 'user-categories', currentUser.uid);
+
+  console.log(userCategoryReference);
+};
+
 export const addCategories = async (data, currentUser) => {
   const db = getFirestore(firebase);
 
-  // const categoriesRef = collection(db, 'user-categories');
-
-  const docTest = doc(db, 'user-categories', currentUser.uid);
+  const userCategoryReference = doc(db, 'user-categories', currentUser.uid);
 
   try {
-    const addDocRef = await setDoc(docTest, data);
+    const addDocRef = await setDoc(userCategoryReference, data);
 
     console.log(addDocRef);
 

@@ -6,9 +6,12 @@ import GoBackArrow from '@/components/GoBackArrow/GoBackArrow.jsx';
 import { useTokenContext } from '@/context/TokenContext.jsx';
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const ChooseCategories = () => {
   const authentication = getAuth();
+
+  const navigate = useNavigate();
 
   const { deleteToken } = useTokenContext();
 
@@ -42,7 +45,7 @@ const ChooseCategories = () => {
 
     if (response) {
       toast('Preferences saved successfully', { type: 'success' });
-      //  TODO REDIRECT TO /
+      navigate('/');
     } else {
       toast('Something went wrong!', { type: 'error' });
     }

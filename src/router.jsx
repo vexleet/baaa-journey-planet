@@ -6,6 +6,7 @@ import AuthGuard from '@/guards/AuthGuard.jsx';
 import GuestGuard from '@/guards/GuestGuard.jsx';
 import ChooseCategories from '@/pages/ChooseCategories/ChooseCategories.jsx';
 import MyComponent from '@/components/MyComponent.jsx';
+import PingDetails from '@/pages/PingDetails/PingDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <GuestGuard outlet={<Register />} />
+  },
+  {
+    path: '/create-ping',
+    element: <AuthGuard outlet={<PingDetails />} />
   }
 ]);
 
