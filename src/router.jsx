@@ -5,13 +5,13 @@ import Register from '@/pages/Register/Register.jsx';
 import AuthGuard from '@/guards/AuthGuard.jsx';
 import GuestGuard from '@/guards/GuestGuard.jsx';
 import ChooseCategories from '@/pages/ChooseCategories/ChooseCategories.jsx';
-import MyComponent from '@/components/MyComponent.jsx';
 import CreatePing from '@/pages/CreatePing/CreatePing.jsx';
+import PingsList from '@/pages/PingsList/PingsList.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <AuthGuard outlet={<MyComponent />} />
+    element: <AuthGuard outlet={<PingsList />} />
   },
   {
     path: '/choose-categories',

@@ -1,0 +1,22 @@
+.ping-card-wrapper {
+  background: red;
+  flex-direction: column;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.ping-image {
+  width: 120px;
+  max-height: 100px;
+  object-fit: cover;
+}
+
+.ping-name {
+  font-size: 15px;
+}
+
+.ping-location {
+  font-size: 12px;
+}
