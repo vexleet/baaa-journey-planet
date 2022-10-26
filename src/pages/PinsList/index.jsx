@@ -17,9 +17,9 @@ const PinsList = () => {
     pins.map((pin) => (
       <PinCard
         key={pin.id}
-        locaiton={pin.pinLocation}
+        locaiton={pin.location}
         image={pin.images[0]}
-        name={pin.pinName}
+        name={pin.name}
         id={pin.id}
       />
     ))

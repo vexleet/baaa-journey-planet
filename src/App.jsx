@@ -11,16 +11,18 @@ import Register from '@/pages/Register/Register.jsx';
 import Navigation from '@/components/Navigation/Navigation.jsx';
 import PinsList from './pages/PinsList';
 import CreatePin from './pages/CreatePin';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
-  const { user } = useTokenContext();
+  const { user, isInitialized } = useTokenContext();
 
   useEffect(() => {
     if (user) {
       console.log(user);
     }
   }, [user]);
-  return (
+
+  return isInitialized ? (
     <div style={{ height: '100%' }}>
       <BrowserRouter>
         <Routes>
@@ -34,6 +36,8 @@ function App() {
       </BrowserRouter>
       <ToastContainer />
     </div>
+  ) : (
+    <LoadingScreen />
   );
 }
 
