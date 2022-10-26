@@ -4,6 +4,7 @@ import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 
 const TokenContext = createContext({
   user: null,
+  isInitialized: false,
   deleteToken: () => {
     return;
   }
@@ -12,10 +13,13 @@ const TokenContext = createContext({
 export const TokenProvider = ({ children }) => {
   const authentication = getAuth();
 
+  const [isInitialized, setIsInitialized] = useState(false);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(authentication, (currentUser) => {
       console.log('Auth', currentUser);
       setUser(currentUser);
+      setIsInitialized(true);
     });
 
     return () => {
@@ -33,7 +37,8 @@ export const TokenProvider = ({ children }) => {
     <TokenContext.Provider
       value={{
         user,
-        deleteToken
+        deleteToken,
+        isInitialized
       }}>
       {children}
     </TokenContext.Provider>
