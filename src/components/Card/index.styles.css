@@ -1,4 +1,4 @@
-.ping-card-wrapper {
+.pin-card-wrapper {
   background: red;
   flex-direction: column;
   display: inline-block;
@@ -7,16 +7,16 @@
   text-align: center;
 }
 
-.ping-image {
+.pin-image {
   width: 120px;
   max-height: 100px;
   object-fit: cover;
 }
 
-.ping-name {
+.pin-name {
   font-size: 15px;
 }
 
-.ping-location {
+.pin-location {
   font-size: 12px;
 }

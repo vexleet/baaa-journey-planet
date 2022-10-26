@@ -8,7 +8,7 @@ const Navigation = () => {
       icon: 'src/assets/icons/home.svg'
     },
     {
-      linkTo: '/create-ping',
+      linkTo: '/create-pin',
       icon: 'src/assets/icons/suitcase.svg'
     },
     {

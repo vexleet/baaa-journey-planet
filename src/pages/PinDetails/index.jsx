@@ -1,6 +1,6 @@
 import { Carousel } from 'react-responsive-carousel';
 
-const PingDetails = () => {
+const PinDetails = () => {
   return (
     <div>
       <Carousel showArrows={false} showThumbs={false} showStatus={false} infiniteLoop>
@@ -41,4 +41,4 @@ const PingDetails = () => {
   );
 };
 
-export default PingDetails;
+export default PinDetails;

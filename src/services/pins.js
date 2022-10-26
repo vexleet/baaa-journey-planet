@@ -1,13 +1,13 @@
 import { collection, getFirestore, addDoc, getDocs } from 'firebase/firestore';
 import firebase from '@/firebase.js';
 
-export const addPing = async (data) => {
+export const addPin = async (data) => {
   const db = getFirestore(firebase);
 
-  const pingsReference = collection(db, 'pings');
+  const pinsReference = collection(db, 'pins');
 
   try {
-    await addDoc(pingsReference, data);
+    await addDoc(pinsReference, data);
 
     return true;
   } catch (e) {
@@ -16,13 +16,13 @@ export const addPing = async (data) => {
   }
 };
 
-export const getPings = async () => {
+export const getPins = async () => {
   const db = getFirestore(firebase);
 
-  const pingsReference = collection(db, 'pings');
+  const pinsReference = collection(db, 'pins');
 
   try {
-    const response = await getDocs(pingsReference);
+    const response = await getDocs(pinsReference);
 
     return response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
   } catch (e) {

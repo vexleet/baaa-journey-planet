@@ -2,31 +2,31 @@ import TextField from '@/components/TextField/TextField.jsx';
 import GoBackArrow from '@/components/GoBackArrow/GoBackArrow.jsx';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { addPing } from '@/services/ping.js';
+import { addPin } from '@/services/pins.js';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import app from '@/firebase.js';
 import { toast } from 'react-toastify';
 
-const CreatePing = () => {
+const CreatePin = () => {
   const navigate = useNavigate();
 
   const storage = getStorage(app);
 
-  const [pingName, setPingName] = useState('');
-  const [pingLocation, setPingLocation] = useState('');
-  const [pingDescription, setPingDescription] = useState('');
+  const [pinName, setPinName] = useState('');
+  const [pinLocation, setPinLocation] = useState('');
+  const [pinDescription, setPinDescription] = useState('');
 
-  const [pingImages, setPingImages] = useState(null);
+  const [pinImages, setPinImages] = useState(null);
 
   const handleImageUpload = (e) => {
-    if (e.target.files.length !== 0) setPingImages(e.target.files);
+    if (e.target.files.length !== 0) setPinImages(e.target.files);
   };
 
   const getImages = async () => {
     const imageUrls = [];
 
-    for (let i = 0; i < pingImages.length; i++) {
-      let img = pingImages.item(i);
+    for (let i = 0; i < pinImages.length; i++) {
+      let img = pinImages.item(i);
 
       const path = `/images/${img.name}`;
       const storageRef = ref(storage, path);
@@ -41,44 +41,49 @@ const CreatePing = () => {
     return imageUrls;
   };
 
-  const createPing = async (e) => {
+  const createPin = async (e) => {
     e.preventDefault();
 
     const images = await getImages();
 
-    const response = await addPing({ pingName, pingLocation, pingDescription, images });
+    const response = await addPin({
+      pinName: pinName,
+      pinLocation: pinLocation,
+      pinDescription: pinDescription,
+      images
+    });
 
     if (response) {
-      toast('Successfully added a ping', { type: 'success' });
+      toast('Successfully added a pin', { type: 'success' });
       navigate('/');
     } else {
-      toast('Something went wrong with adding your ping! Try again.', { type: 'error' });
+      toast('Something went wrong with adding your pin! Try again.', { type: 'error' });
     }
   };
 
   return (
     <div style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 40 }}>
       <GoBackArrow onClick={() => navigate('/')} />
-      <h2 style={{ fontSize: 30, marginBottom: 20, marginTop: 10 }}>Create a ping</h2>
+      <h2 style={{ fontSize: 30, marginBottom: 20, marginTop: 10 }}>Create a pin</h2>
 
-      <form onSubmit={createPing}>
+      <form onSubmit={createPin}>
         <TextField
-          id="pingName"
-          value={pingName}
-          onChange={(e) => setPingName(e.target.value)}
-          label="Ping Name"
+          id="pinName"
+          value={pinName}
+          onChange={(e) => setPinName(e.target.value)}
+          label="Pin Name"
         />
         <TextField
           id="location"
-          value={pingLocation}
-          onChange={(e) => setPingLocation(e.target.value)}
-          label="Ping Location"
+          value={pinLocation}
+          onChange={(e) => setPinLocation(e.target.value)}
+          label="Pin Location"
         />
         <TextField
-          id="pingDescription"
-          value={pingDescription}
-          onChange={(e) => setPingDescription(e.target.value)}
-          label="Ping Description"
+          id="pinDescription"
+          value={pinDescription}
+          onChange={(e) => setPinDescription(e.target.value)}
+          label="Pin Description"
           isTextArea
         />
 
@@ -109,4 +114,4 @@ const CreatePing = () => {
   );
 };
 
-export default CreatePing;
+export default CreatePin;
