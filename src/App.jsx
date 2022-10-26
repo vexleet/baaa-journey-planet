@@ -11,6 +11,7 @@ import Register from '@/pages/Register/Register.jsx';
 import Navigation from '@/components/Navigation/Navigation.jsx';
 import PinsList from './pages/PinsList';
 import CreatePin from './pages/CreatePin';
+import Discover from './pages/Discover';
 
 function App() {
   const { user } = useTokenContext();
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" element={<GuestGuard outlet={<Register />} />} />
           <Route path="/choose-categories" element={<AuthGuard outlet={<ChooseCategories />} />} />
           <Route path="/create-pin" element={<AuthGuard outlet={<CreatePin />} />} />
+          <Route path="/discover" element={<AuthGuard outlet={<Discover />} />} />
         </Routes>
         {user && <Navigation />}
       </BrowserRouter>

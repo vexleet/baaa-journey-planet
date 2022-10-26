@@ -3,7 +3,7 @@ import NavigationItem from '@/components/Navigation/NavigationItem.jsx';
 const Navigation = () => {
   const navigationItems = [
     {
-      linkTo: '/',
+      linkTo: '/discover',
       icon: 'src/assets/icons/home.svg'
     },
     {
