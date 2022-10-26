@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50.004" height="50" viewBox="0 0 50.004 50">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#c2d9d9"/>
+    </linearGradient>
+    <filter id="Icon_ionic-ios-send" x="0" y="0" width="50.004" height="50" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.612"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Icon_ionic-ios-send-2" x="0" y="0" width="50.004" height="50" filterUnits="userSpaceOnUse">
+      <feOffset dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur-2"/>
+      <feFlood flood-opacity="0.702" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g data-type="innerShadowGroup">
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Icon_ionic-ios-send)">
+      <path id="Icon_ionic-ios-send-3" data-name="Icon ionic-ios-send" d="M35.5,4.574,4.9,17.911a.7.7,0,0,0,.025,1.275L13.2,23.862a1.335,1.335,0,0,0,1.525-.15L31.047,9.642c.108-.092.367-.267.467-.167s-.058.358-.15.467l-14.12,15.9a1.33,1.33,0,0,0-.133,1.592l5.409,8.677a.7.7,0,0,0,1.267-.017L36.439,5.5A.7.7,0,0,0,35.5,4.574Z" transform="translate(4.5 1.5)" fill="url(#linear-gradient)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Icon_ionic-ios-send-2)">
+      <path id="Icon_ionic-ios-send-4" data-name="Icon ionic-ios-send" d="M35.5,4.574,4.9,17.911a.7.7,0,0,0,.025,1.275L13.2,23.862a1.335,1.335,0,0,0,1.525-.15L31.047,9.642c.108-.092.367-.267.467-.167s-.058.358-.15.467l-14.12,15.9a1.33,1.33,0,0,0-.133,1.592l5.409,8.677a.7.7,0,0,0,1.267-.017L36.439,5.5A.7.7,0,0,0,35.5,4.574Z" transform="translate(4.5 1.5)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
