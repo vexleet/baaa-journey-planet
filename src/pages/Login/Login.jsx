@@ -24,7 +24,7 @@ const Login = () => {
 
   return (
     <div className="login-wrapper">
-      <img className="logo" src="src/assets/images/logo1.png" alt="Journey Planet Logo" />
+      <img className="logo" src="src/assets/images/logo.svg" alt="Journey Planet Logo" />
       <p className="app-name"> Plan B</p>
       <GoogleLoginButton />
 
