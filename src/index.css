@@ -24,6 +24,30 @@
   --shadow: rgba(54, 54, 54, 0.59);
 }
 
+.orange {
+  color: var(--orange);
+}
+
+.selected {
+  color: var(--selected);
+}
+
+.navigation {
+  color: var(--navigation);
+}
+
+.darkgrey {
+  color: var(--darkgrey);
+}
+
+.lightgrey {
+  color: var(--lightgrey);
+}
+
+.text {
+  color: var(--text);
+}
+
 html,
 body {
   overflow: hidden;
