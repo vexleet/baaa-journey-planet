@@ -10,7 +10,8 @@ import GuestGuard from '@/guards/GuestGuard.jsx';
 import ChooseCategories from '@/pages/ChooseCategories/ChooseCategories.jsx';
 import Register from '@/pages/Register/Register.jsx';
 import CreatePing from '@/pages/CreatePing/CreatePing.jsx';
-import Navigation from '@/components/Navigation/Navigation.jsx';
+import Navigation from '@/components/Navigation';
+import MyProfile from '@/pages/MyProfile/MyProfile.jsx';
 
 function App() {
   const { user } = useTokenContext();
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" element={<GuestGuard outlet={<Register />} />} />
           <Route path="/choose-categories" element={<AuthGuard outlet={<ChooseCategories />} />} />
           <Route path="/create-ping" element={<AuthGuard outlet={<CreatePing />} />} />
+          <Route path="/profile" element={<AuthGuard outlet={<MyProfile />} />} />
         </Routes>
         {user && <Navigation />}
       </BrowserRouter>
