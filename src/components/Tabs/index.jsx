@@ -4,7 +4,7 @@ import './index.styles.css';
 import TabPanel from '@/components/Tabs/TabPanel.jsx';
 import Tab from '@/components/Tabs/Tab.jsx';
 
-const Tabs = ({ children, className, value, onChange }) => {
+const Tabs = ({ children, className, tabsClassName, value, tabsPanelClassName, onChange }) => {
   const tabIsSelected = (tabValue) => {
     return value === tabValue;
   };
@@ -38,9 +38,9 @@ const Tabs = ({ children, className, value, onChange }) => {
   );
 
   return (
-    <div>
-      <div className={'tabs ' + className}>{tabsComponents}</div>
-      {tabPanelComponents}
+    <div className={className}>
+      <div className={'tabs ' + tabsClassName}>{tabsComponents}</div>
+      <div className={tabsPanelClassName}>{tabPanelComponents}</div>
     </div>
   );
 };
@@ -53,6 +53,8 @@ Tabs.propTypes = {
     PropTypes.oneOfType([PropTypes.instanceOf(Tab), PropTypes.instanceOf(TabPanel)])
   ),
   className: PropTypes.string,
+  tabsClassName: PropTypes.string,
+  tabsPanelClassName: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.any.isRequired
 };
