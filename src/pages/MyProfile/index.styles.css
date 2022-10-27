@@ -1,0 +1,11 @@
+.profile-tabs {
+  width: 100%;
+}
+
+.profile-tabs-wrapper {
+  justify-content: space-evenly;
+}
+
+.profile-tabs-panel-wrapper {
+  margin-top: 30px;
+}

@@ -12,7 +12,7 @@ import PinsList from './pages/PinsList';
 import CreatePin from './pages/CreatePin';
 import LoadingScreen from './components/LoadingScreen';
 import Navigation from '@/components/Navigation';
-import MyProfile from '@/pages/MyProfile/MyProfile.jsx';
+import MyProfile from '@/pages/MyProfile/index.jsx';
 
 function App() {
   const { user, isInitialized } = useTokenContext();
@@ -24,7 +24,7 @@ function App() {
   }, [user]);
 
   return isInitialized ? (
-    <div style={{ height: '100%' }}>
+    <div style={{ marginBottom: user ? 70 : 0 }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AuthGuard outlet={<PinsList />} />} />
