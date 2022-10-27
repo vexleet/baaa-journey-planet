@@ -5,27 +5,39 @@
   height: 100%;
   flex-direction: column;
   padding: 0 45px;
+  background-image: linear-gradient(white, var(--background));
 }
 
 .logo {
   width: 80px;
   height: 80px;
   display: block;
-  margin: 0 auto 30px;
+  margin: 0 auto 5px;
   padding: 0;
+}
+
+.app-name {
+  font-size: 40px;
+  color: var(--text);
+  margin: 0 auto 45px;
+  font-family: 'Papyrus';
 }
 
 .login-form {
   width: 100%;
+  color: var(--text);
 }
 
 .login-form-submit {
   display: block;
   margin: 25px auto 0;
+  background-color: var(--orange);
+  box-shadow: 1px 3px 6px var(--shadow);
 }
 
 .agree-terms {
   font-size: 12px;
   text-align: center;
   margin-top: 35px;
+  color: var(--darkgrey);
 }

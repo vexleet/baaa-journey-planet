@@ -13,6 +13,39 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --orange: #fe6500;
+  --selected: #f9a166;
+  --navigation: #355959;
+  --background: #c2d9d9;
+  --darkgrey: #4e4e4e;
+  --lightgrey: #9c9c9c;
+  --text: rgb(25, 25, 25);
+  --shadow: rgba(54, 54, 54, 0.59);
+}
+
+.orange {
+  color: var(--orange);
+}
+
+.selected {
+  color: var(--selected);
+}
+
+.navigation {
+  color: var(--navigation);
+}
+
+.darkgrey {
+  color: var(--darkgrey);
+}
+
+.lightgrey {
+  color: var(--lightgrey);
+}
+
+.text {
+  color: var(--text);
 }
 
 html,
@@ -26,8 +59,14 @@ body,
   height: 100%;
 }
 
+@font-face {
+  font-family: 'Papyrus';
+  src: url('../public/fonts/PAPYRUS.ttf');
+  font-weight: 10;
+}
+
 button {
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
