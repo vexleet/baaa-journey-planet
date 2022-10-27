@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import TextField from '../TextField/TextField';
 import './index.styles.css';
 
 function SearchBar({ placeholder, data }) {
@@ -27,29 +28,28 @@ function SearchBar({ placeholder, data }) {
   return (
     <div className="search">
       <div className="searchInput">
-        <input type="text" placeholder={placeholder} value={fieldFilled} onChange={handleFilter} />
-        <div className="searcIcon">
-          {filteredData.length === 0 ? (
-            <img src="" />
-          ) : (
-            <img id="clearBtn" onClick={clearInput} src="" />
-          )}
-        </div>
+        <TextField
+          id="search"
+          className="textfield-input"
+          onChange={handleFilter}
+          value={fieldFilled}
+          placeholder={placeholder}
+          type="search"
+        />
+        {filteredData.length === 0 ? null : (
+          <div className="searcIcon" onClick={clearInput}>
+            <div className="searchClear">X</div>
+          </div>
+        )}
       </div>
-      {filteredData.length !== 0 && (
-        <div className="dataResult">
-          {filteredData.slice(0, 15).map((value, key) => {
-            return <p key={key}>{value.name}</p>;
-          })}
-        </div>
-      )}
     </div>
   );
 }
 
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
-  data: PropTypes.node.isRequired
+  data: PropTypes.node.isRequired,
+  handleFilter: PropTypes.array
 };
 
 export default SearchBar;
