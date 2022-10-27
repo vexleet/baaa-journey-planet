@@ -4,7 +4,7 @@ import './GoBackArrow.styles.css';
 const GoBackArrow = ({ onClick }) => {
   return (
     <div onClick={onClick} className="goto-box">
-      <p>{'<'}</p>
+      <img className="back" src="src/assets/icons/back.svg" alt="Go Back Icon" />
     </div>
   );
 };
