@@ -45,49 +45,51 @@ const Register = () => {
 
   return (
     <div className="register-wrapper">
-      <div style={{ marginBottom: 20, alignSelf: 'flex-start' }}>
+      <div style={{ marginBottom: 15, marginLeft: 20, marginTop: 20, alignSelf: 'flex-start' }}>
         <GoBackArrow onClick={() => navigate('/login')} />
       </div>
+      <div className="register-content-wrapper">
+        <p className="register-title text">
+          Lets get you started on your journey around the world!
+        </p>
+        <form onSubmit={submitRegister} style={{ width: '100%' }} className="text">
+          <TextField
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            type="text"
+            label="Username"
+          />
 
-      <p className="register-title">Lets get you started on your journey around the world!</p>
+          <TextField
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            label="Email"
+          />
 
-      <form onSubmit={submitRegister} style={{ width: '100%' }}>
-        <TextField
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          type="text"
-          label="Username"
-        />
+          <TextField
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            label="Password"
+          />
 
-        <TextField
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          label="Email"
-        />
+          <TextField
+            id="repeat-password"
+            value={repeatPassword}
+            onChange={(e) => setRepeatPassword(e.target.value)}
+            type="password"
+            label="Repeat Password"
+          />
 
-        <TextField
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          label="Password"
-        />
-
-        <TextField
-          id="repeat-password"
-          value={repeatPassword}
-          onChange={(e) => setRepeatPassword(e.target.value)}
-          type="password"
-          label="Repeat Password"
-        />
-
-        <button type="submit" className="submit-button">
-          Register
-        </button>
-      </form>
+          <button type="submit" className="submit-button orange">
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

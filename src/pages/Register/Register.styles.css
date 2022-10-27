@@ -1,18 +1,22 @@
 .register-wrapper {
-  padding: 70px 50px 0;
+  background-image: linear-gradient(white, var(--background));
+  min-height: 100%;
+}
+
+.register-content-wrapper {
+  padding: 0 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .register-title {
   font-size: 22px;
-  margin-bottom: 35px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
 .submit-button {
-  margin: 50px auto 0;
+  margin: 100px auto 0;
   display: block;
 }
