@@ -1,30 +1,24 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import TextField from '../TextField/TextField';
 import './index.styles.css';
 
-function SearchBar({ placeholder, data }) {
-  const [filteredData, setFilteredData] = useState([]);
-  const [fieldFilled, setFieldFilled] = useState('');
-
+function SearchBar({ placeholder, originalPins, setFilteredPins, searchInput, setSearchInput }) {
   const handleFilter = (event) => {
     const wordEntered = event.target.value;
-    setFieldFilled(wordEntered);
-    const newFilter = data.filter((value) => {
+    setSearchInput(wordEntered);
+
+    const newFilter = originalPins.filter((value) => {
       return value.name.toLowerCase().includes(wordEntered.toLowerCase());
     });
 
-    if (wordEntered === '') {
-      setFilteredData([]);
-    } else {
-      setFilteredData(newFilter);
-    }
+    setFilteredPins(newFilter);
   };
 
   const clearInput = () => {
-    setFilteredData([]);
-    setFieldFilled('');
+    setSearchInput('');
   };
+
   return (
     <div className="search">
       <div className="searchInput">
@@ -32,15 +26,11 @@ function SearchBar({ placeholder, data }) {
           id="search"
           className="textfield-input"
           onChange={handleFilter}
-          value={fieldFilled}
+          onClear={clearInput}
+          value={searchInput}
           placeholder={placeholder}
           type="search"
         />
-        {filteredData.length === 0 ? null : (
-          <div className="searcIcon" onClick={clearInput}>
-            <div className="searchClear">X</div>
-          </div>
-        )}
       </div>
     </div>
   );
@@ -48,8 +38,10 @@ function SearchBar({ placeholder, data }) {
 
 SearchBar.propTypes = {
   placeholder: PropTypes.string,
-  data: PropTypes.node.isRequired,
-  handleFilter: PropTypes.array
+  originalPins: PropTypes.array,
+  setFilteredPins: PropTypes.func,
+  searchInput: PropTypes.array,
+  setSearchInput: PropTypes.func
 };
 
 export default SearchBar;

@@ -1,7 +1,17 @@
 import PropTypes from 'prop-types';
 import './TextField.styles.css';
 
-const TextField = ({ id, label, placeholder, type, onChange, value, isDisabled, isTextArea }) => {
+const TextField = ({
+  id,
+  label,
+  placeholder,
+  type,
+  onChange,
+  onClear,
+  value,
+  isDisabled,
+  isTextArea
+}) => {
   return (
     <div>
       {/*If label is not empty show it */}
@@ -22,15 +32,21 @@ const TextField = ({ id, label, placeholder, type, onChange, value, isDisabled, 
           rows={5}
         />
       ) : (
-        <input
-          className="textfield-input"
-          id={id}
-          placeholder={placeholder}
-          type={type}
-          value={value}
-          onChange={onChange}
-          disabled={isDisabled}
-        />
+        <div className="searchInput">
+          <input
+            className="textfield-input"
+            id={id}
+            placeholder={placeholder}
+            type={type}
+            value={value}
+            onChange={onChange}
+            disabled={isDisabled}></input>
+          {value && (
+            <button className="searchClear" onClick={onClear}>
+              X
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
@@ -43,6 +59,7 @@ TextField.propTypes = {
   type: PropTypes.oneOf(['text', 'email', 'password']),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  onClear: PropTypes.func,
   isDisabled: PropTypes.bool,
   isTextArea: PropTypes.bool
 };
