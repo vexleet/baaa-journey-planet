@@ -28,13 +28,6 @@
   color: var(--text);
 }
 
-.login-form-submit {
-  display: block;
-  margin: 25px auto 0;
-  background-color: var(--orange);
-  box-shadow: 1px 3px 6px var(--shadow);
-}
-
 .agree-terms {
   font-size: 12px;
   text-align: center;

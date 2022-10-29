@@ -41,7 +41,7 @@ SearchBar.propTypes = {
   placeholder: PropTypes.string,
   originalPins: PropTypes.array,
   setFilteredPins: PropTypes.func,
-  searchInput: PropTypes.array,
+  searchInput: PropTypes.string,
   setSearchInput: PropTypes.func
 };
 

@@ -1,8 +1,9 @@
 import SearchBar from '../../components/SearchBar';
 import { getPins } from '@/services/pins.js';
 import { useEffect, useState } from 'react';
-import PinCard from '../../components/PinCard';
+import PinCard from '@/components/PinCard/index.jsx';
 import Toggler from '../../components/Toggler';
+
 
 const categories = ['restaurant', 'bar'];
 
