@@ -9,10 +9,12 @@ import PopupDialog from '@/components/PopupDialog/index.jsx';
 import './index.styles.css';
 
 const CreatePingboard = ({ isVisible, setIsVisible, handleSuccess }) => {
+  const pingboardTogglerItems = ['Private', 'Public'];
+
   const { user } = useTokenContext();
 
   const [pingboardName, setPingboardName] = useState('');
-  const [privacy, setPrivacy] = useState('Private');
+  const [privacy, setPrivacy] = useState(pingboardTogglerItems[0]);
 
   const createPingboard = () => {
     const createResponse = addPingboard({
@@ -56,7 +58,7 @@ const CreatePingboard = ({ isVisible, setIsVisible, handleSuccess }) => {
           </div>
 
           <Toggler
-            items={['Public', 'Private']}
+            items={pingboardTogglerItems}
             setActiveItem={setPrivacy}
             activeItem={privacy}
             label="Privacy"
