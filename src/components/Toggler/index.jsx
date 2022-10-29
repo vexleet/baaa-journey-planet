@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './index.styles.css';
 
 const arrayHas2Elements = (props, propName) => {
   const myProp = props[propName];
@@ -6,33 +7,35 @@ const arrayHas2Elements = (props, propName) => {
   if (myProp.length !== 2) return new Error(`${propName} must have 2 elements.`);
 };
 
-const Toggler = ({ items, setActiveItem }) => {
+const Toggler = ({ items, setActiveItem, label, activeItem }) => {
   const handleSetActiveItem = (item) => {
     setActiveItem(item);
   };
 
-  // TODO USE THIS IN ORDER TO SET DIFFERENT COLLOR FOR AN ITEM
-  // DO SOMETHING LIKE THAT className={isActiveItem(items[0]) ? 'toggle-item 'toggle-item-active' : 'toggle-item');
-  // const isActiveItem = (item) => {
-  //     return item === activeItem
-  // }
+  const togglerItemClass = (item) => {
+    return item === activeItem ? 'toggler-item active-item' : 'toggler-item';
+  };
 
   return (
-    <div>
-      <div onClick={() => handleSetActiveItem(items[0])}>
-        <p>{items[0]}</p>
+    <>
+      {label && <p style={{ marginBottom: 10 }}>{label}</p>}
+      <div className="toggler-wrapper">
+        <div className={togglerItemClass(items[0])} onClick={() => handleSetActiveItem(items[0])}>
+          <p>{items[0]}</p>
+        </div>
+        <div className={togglerItemClass(items[1])} onClick={() => handleSetActiveItem(items[1])}>
+          <p>{items[1]}</p>
+        </div>
       </div>
-      <div onClick={() => handleSetActiveItem(items[1])}>
-        <p>{items[1]}</p>
-      </div>
-    </div>
+    </>
   );
 };
 
 Toggler.propTypes = {
   items: arrayHas2Elements,
   activeItem: PropTypes.string.isRequired,
-  setActiveItem: PropTypes.func.isRequired
+  setActiveItem: PropTypes.func.isRequired,
+  label: PropTypes.string
 };
 
 export default Toggler;

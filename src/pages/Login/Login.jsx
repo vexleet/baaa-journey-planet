@@ -49,7 +49,7 @@ const Login = () => {
 
         <Link to="/forgot-password">Forgot password?</Link>
 
-        <button type="submit" className="login-form-submit">
+        <button type="submit" className="primary-button">
           Log in
         </button>
       </form>

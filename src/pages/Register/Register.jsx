@@ -85,7 +85,7 @@ const Register = () => {
             label="Repeat Password"
           />
 
-          <button type="submit" className="submit-button orange">
+          <button type="submit" className="primary-button">
             Register
           </button>
         </form>
