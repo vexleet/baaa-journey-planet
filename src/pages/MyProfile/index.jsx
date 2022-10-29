@@ -21,15 +21,24 @@ const MyProfile = () => {
     (async () => {
       setLoading(true);
 
-      const pinsResponse = await getPins();
-      const pingboardsResponse = await getPingboards(user);
-
-      setPins(pinsResponse);
-      setPingboards(pingboardsResponse);
+      await requestGetPins();
+      await requestGetPingboards();
 
       setLoading(false);
     })();
   }, []);
+
+  const requestGetPins = async () => {
+    const pinsResponse = await getPins();
+
+    setPins(pinsResponse);
+  };
+
+  const requestGetPingboards = async () => {
+    const pingboardsResponse = await getPingboards(user);
+
+    setPingboards(pingboardsResponse);
+  };
 
   const tabValues = {
     trips: 'trips',
@@ -69,7 +78,7 @@ const MyProfile = () => {
               <MyProfileTripsList trips={[]} />
             </Tabs.TabPanel>
             <Tabs.TabPanel value={tabValues.pingboards}>
-              <MyProfilePingboards pingboards={pingboards} />
+              <MyProfilePingboards pingboards={pingboards} onAddPingboards={requestGetPingboards} />
             </Tabs.TabPanel>
             <Tabs.TabPanel value={tabValues.pings}>
               {pins.length !== 0 && <MyProfilePinsList pins={pins} />}

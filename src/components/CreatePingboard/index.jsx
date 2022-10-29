@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import PopupDialog from '@/components/PopupDialog/index.jsx';
 import './index.styles.css';
 
-const CreatePingboard = ({ isVisible, setIsVisible }) => {
+const CreatePingboard = ({ isVisible, setIsVisible, handleSuccess }) => {
   const { user } = useTokenContext();
 
   const [pingboardName, setPingboardName] = useState('');
@@ -24,6 +24,7 @@ const CreatePingboard = ({ isVisible, setIsVisible }) => {
 
     if (createResponse) {
       toast('Successfully created a pingboard', { type: 'success' });
+      handleSuccess();
       setIsVisible(false);
     } else {
       toast('Something went wrong with creating your pingboard. Try again', { type: 'error' });
@@ -72,7 +73,8 @@ const CreatePingboard = ({ isVisible, setIsVisible }) => {
 
 CreatePingboard.propTypes = {
   isVisible: PropTypes.bool.isRequired,
-  setIsVisible: PropTypes.func.isRequired
+  setIsVisible: PropTypes.func.isRequired,
+  handleSuccess: PropTypes.func
 };
 
 export default CreatePingboard;
