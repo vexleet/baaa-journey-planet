@@ -14,7 +14,14 @@ const MyProfilePinsList = ({ pins }) => {
   };
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        rowGap: 25,
+        columnGap: 55,
+        justifyContent: 'center'
+      }}>
       {pinsList()}
     </div>
   );

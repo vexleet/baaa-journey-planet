@@ -6,7 +6,7 @@ const SmallPinCard = ({ image, subtitle, title }) => {
     <div className="small-pin">
       <img className="small-pin-image" src={image} />
       <p className="small-pin-title">{title}</p>
-      {subtitle && <p>{subtitle}</p>}
+      {subtitle && <p className="small-pin-subtitle">{subtitle}</p>}
     </div>
   );
 };
