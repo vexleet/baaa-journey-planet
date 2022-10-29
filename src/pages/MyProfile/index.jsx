@@ -15,7 +15,7 @@ const MyProfile = () => {
   const [loading, setLoading] = useState(false);
 
   const [pins, setPins] = useState([]);
-  const [, setPingboards] = useState([]);
+  const [pingboards, setPingboards] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -69,7 +69,7 @@ const MyProfile = () => {
               <MyProfileTripsList trips={[]} />
             </Tabs.TabPanel>
             <Tabs.TabPanel value={tabValues.pingboards}>
-              <MyProfilePingboards />
+              <MyProfilePingboards pingboards={pingboards} />
             </Tabs.TabPanel>
             <Tabs.TabPanel value={tabValues.pings}>
               {pins.length !== 0 && <MyProfilePinsList pins={pins} />}
