@@ -10,18 +10,23 @@ import LoadingScreen from '@/components/LoadingScreen/index.jsx';
 
 const MyProfile = () => {
   const { user } = useTokenContext();
-  const [loading, setLoading] = useState(true);
+
+  const [loading, setLoading] = useState(false);
+
   const [pins, setPins] = useState([]);
   const [, setPingboards] = useState([]);
 
   useEffect(() => {
-    // TODO SMALL CHALLENGE FOR DORI - ADD LOADING :)
     (async () => {
+      setLoading(true);
+
       const pinsResponse = await getPins();
       const pingboardsResponse = await getPingboards(user);
-      setTimeout(() => setLoading(false));
+
       setPins(pinsResponse);
       setPingboards(pingboardsResponse);
+
+      setLoading(false);
     })();
   }, []);
 

@@ -24,7 +24,7 @@ function App() {
   }, [user]);
 
   return isInitialized ? (
-    <div style={{ marginBottom: user ? 70 : 0 }}>
+    <div style={{ paddingBottom: user ? 50 : 0 }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AuthGuard outlet={<PinsList />} />} />
