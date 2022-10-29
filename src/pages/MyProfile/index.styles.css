@@ -1,0 +1,39 @@
+.profile-page {
+  background-image: linear-gradient(white, var(--background));
+  background-repeat: repeat-x;
+  background-size: 100vh;
+  background-attachment: fixed;
+}
+
+.profile-tabs {
+  width: 100%;
+  padding: 30px 0;
+}
+
+.profile-tabs-wrapper {
+  justify-content: space-evenly;
+}
+
+.profile-tabs-panel-wrapper {
+  margin-top: 30px;
+}
+
+.profile-tabs-wrapper p {
+  color: var(--text);
+}
+
+.profile-tabs-wrapper {
+  border-bottom: solid 1px var(--darkgrey);
+  padding: 0 0 10px 0;
+  -moz-box-shadow: 1px 5px 5px var(--shadow);
+  -webkit-box-shadow: 1px 5px 5px var(--shadow);
+  box-shadow: 1px 5px 5px var(--shadow);
+}
+
+.profile-section {
+  margin: 20px 0;
+}
+
+.profile-section img {
+  margin: 10px 0;
+}
