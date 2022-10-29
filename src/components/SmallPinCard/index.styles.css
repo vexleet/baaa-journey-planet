@@ -37,6 +37,7 @@
   white-space: nowrap;
   z-index: 1;
   font-size: 15px;
+  color: #fff;
 }
 
 .small-pin-subtitle {
@@ -45,4 +46,5 @@
   white-space: nowrap;
   z-index: 1;
   font-size: 10px;
+  color: #fff;
 }

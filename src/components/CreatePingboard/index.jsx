@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import Toggler from '@/components/Toggler/index.jsx';
 import PropTypes from 'prop-types';
 import PopupDialog from '@/components/PopupDialog/index.jsx';
+import './index.styles.css';
 
 const CreatePingboard = ({ isVisible, setIsVisible }) => {
   const { user } = useTokenContext();
@@ -35,23 +36,36 @@ const CreatePingboard = ({ isVisible, setIsVisible }) => {
 
   return (
     <PopupDialog isOpen={isVisible} onClickOutside={closeDialog}>
-      <div>
-        <div onClick={closeDialog}>x</div>
-        <p>Create new board</p>
+      <div className="create-wrapper">
+        <div className="create-header">
+          <div className="create-close" onClick={closeDialog}>
+            X
+          </div>
+          <p className="create-title">Create new board</p>
+        </div>
+
+        <div className="create-main">
+          <div style={{ marginBottom: 30 }}>
+            <TextField
+              id="pingboard-name"
+              value={pingboardName}
+              onChange={(e) => setPingboardName(e.target.value)}
+              label="Give a name"
+            />
+          </div>
+
+          <Toggler
+            items={['Public', 'Private']}
+            setActiveItem={setPrivacy}
+            activeItem={privacy}
+            label="Privacy"
+          />
+
+          <button className="primary-button" onClick={createPingboard}>
+            Create
+          </button>
+        </div>
       </div>
-
-      <TextField
-        id="pingboard-name"
-        value={pingboardName}
-        onChange={(e) => setPingboardName(e.target.value)}
-        label="Give a name"
-      />
-
-      <p>Privacy</p>
-
-      <Toggler items={['Public', 'Private']} setActiveItem={setPrivacy} activeItem={privacy} />
-
-      <button onClick={createPingboard}>Create</button>
     </PopupDialog>
   );
 };
