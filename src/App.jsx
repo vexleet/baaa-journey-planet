@@ -10,6 +10,7 @@ import ChooseCategories from '@/pages/ChooseCategories/ChooseCategories.jsx';
 import Register from '@/pages/Register/Register.jsx';
 import PinsList from './pages/PinsList';
 import CreatePin from './pages/CreatePin';
+import Discover from './pages/Discover';
 import LoadingScreen from './components/LoadingScreen';
 import Navigation from '@/components/Navigation';
 import MyProfile from '@/pages/MyProfile/index.jsx';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/choose-categories" element={<AuthGuard outlet={<ChooseCategories />} />} />
           <Route path="/create-pin" element={<AuthGuard outlet={<CreatePin />} />} />
           <Route path="/profile" element={<AuthGuard outlet={<MyProfile />} />} />
+          <Route path="/discover" element={<AuthGuard outlet={<Discover />} />} />
         </Routes>
         {user && <Navigation />}
       </BrowserRouter>
