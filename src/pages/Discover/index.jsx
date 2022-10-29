@@ -1,7 +1,7 @@
 import SearchBar from '../../components/SearchBar';
 import { getPins } from '@/services/pins.js';
 import { useEffect, useState } from 'react';
-import PinCard from '../../components/Card';
+import PinCard from '../../components/PinCard';
 
 const categories = ['restaurant', 'bar'];
 
@@ -42,6 +42,12 @@ const Discover = () => {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
+      <div className="filterButton">
+        <button>
+          <image src=""></image>
+        </button>
+      </div>
+      <div></div>
 
       {filteredPins.length > 0 && (
         <div>
