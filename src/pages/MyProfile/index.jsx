@@ -6,6 +6,7 @@ import { getPins } from '@/services/pins.js';
 import { getPingboards } from '@/services/pingboards.js';
 import MyProfilePinsList from '@/pages/MyProfile/subcomponents/MyProfilePinsList.jsx';
 import MyProfilePingboards from '@/pages/MyProfile/subcomponents/MyProfilePingboards.jsx';
+import MyProfileTripsList from '@/pages/MyProfile/subcomponents/MyProfileTripsList.jsx';
 
 const MyProfile = () => {
   const { user } = useTokenContext();
@@ -55,7 +56,9 @@ const MyProfile = () => {
         <Tabs.Tab value={tabValues.pingboards} label="Pingboard"></Tabs.Tab>
         <Tabs.Tab value={tabValues.pings} label="Pings"></Tabs.Tab>
 
-        <Tabs.TabPanel value={tabValues.trips}></Tabs.TabPanel>
+        <Tabs.TabPanel value={tabValues.trips}>
+          <MyProfileTripsList trips={[]} />
+        </Tabs.TabPanel>
         <Tabs.TabPanel value={tabValues.pingboards}>
           <MyProfilePingboards />
         </Tabs.TabPanel>
