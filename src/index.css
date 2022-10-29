@@ -17,7 +17,7 @@
   --orange: #fe6500;
   --selected: #f9a166;
   --navigation: #355959;
-  --background: #c2d9d9;
+  --background: #adcaca;
   --darkgrey: #4e4e4e;
   --lightgrey: #9c9c9c;
   --text: rgb(25, 25, 25);
@@ -49,14 +49,10 @@
 }
 
 html,
-body {
-  overflow: hidden;
-}
-
-html,
 body,
 #root {
   height: 100%;
+  overflow-x: hidden;
 }
 
 @font-face {
