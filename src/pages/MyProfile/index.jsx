@@ -7,6 +7,7 @@ import { getPingboards } from '@/services/pingboards.js';
 import MyProfilePinsList from '@/pages/MyProfile/subcomponents/MyProfilePinsList.jsx';
 import MyProfilePingboards from '@/pages/MyProfile/subcomponents/MyProfilePingboards.jsx';
 import LoadingScreen from '@/components/LoadingScreen/index.jsx';
+import MyProfileTripsList from '@/pages/MyProfile/subcomponents/MyProfileTripsList.jsx';
 
 const MyProfile = () => {
   const { user } = useTokenContext();
@@ -14,21 +15,30 @@ const MyProfile = () => {
   const [loading, setLoading] = useState(false);
 
   const [pins, setPins] = useState([]);
-  const [, setPingboards] = useState([]);
+  const [pingboards, setPingboards] = useState([]);
 
   useEffect(() => {
     (async () => {
       setLoading(true);
 
-      const pinsResponse = await getPins();
-      const pingboardsResponse = await getPingboards(user);
-
-      setPins(pinsResponse);
-      setPingboards(pingboardsResponse);
+      await requestGetPins();
+      await requestGetPingboards();
 
       setLoading(false);
     })();
   }, []);
+
+  const requestGetPins = async () => {
+    const pinsResponse = await getPins();
+
+    setPins(pinsResponse);
+  };
+
+  const requestGetPingboards = async () => {
+    const pingboardsResponse = await getPingboards(user);
+
+    setPingboards(pingboardsResponse);
+  };
 
   const tabValues = {
     trips: 'trips',
@@ -64,9 +74,11 @@ const MyProfile = () => {
             <Tabs.Tab value={tabValues.pingboards} label="Pingboard"></Tabs.Tab>
             <Tabs.Tab value={tabValues.pings} label="Pings"></Tabs.Tab>
 
-            <Tabs.TabPanel value={tabValues.trips}></Tabs.TabPanel>
+            <Tabs.TabPanel value={tabValues.trips}>
+              <MyProfileTripsList trips={[]} />
+            </Tabs.TabPanel>
             <Tabs.TabPanel value={tabValues.pingboards}>
-              <MyProfilePingboards />
+              <MyProfilePingboards pingboards={pingboards} onAddPingboards={requestGetPingboards} />
             </Tabs.TabPanel>
             <Tabs.TabPanel value={tabValues.pings}>
               {pins.length !== 0 && <MyProfilePinsList pins={pins} />}

@@ -1,4 +1,4 @@
-import { collection, getFirestore, addDoc, getDocs } from 'firebase/firestore';
+import { collection, getFirestore, addDoc, getDocs, doc, getDoc } from 'firebase/firestore';
 import firebase from '@/firebase.js';
 
 export const addPin = async (data) => {
@@ -29,4 +29,15 @@ export const getPins = async () => {
     console.log(e);
     return false;
   }
+};
+
+export const getPin = async (pinId) => {
+  const db = getFirestore(firebase);
+
+  const pinsReference = collection(db, 'pins');
+
+  const pinDocument = await doc(pinsReference, pinId);
+  const pinDocumentSnapshot = await getDoc(pinDocument);
+
+  return pinDocumentSnapshot.data();
 };

@@ -1,0 +1,24 @@
+.create-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.create-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 35px;
+  width: 100%;
+}
+
+.create-header .create-title {
+  font-size: 20px;
+  color: var(--text);
+  flex: 1;
+  text-align: center;
+}
+
+.create-main {
+  padding: 0 50px;
+}

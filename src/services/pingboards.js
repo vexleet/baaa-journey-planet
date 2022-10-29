@@ -1,5 +1,6 @@
 import { addDoc, collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import firebase from '@/firebase.js';
+import { getPin } from '@/services/pins.js';
 
 const path = 'pingboards';
 
@@ -42,7 +43,23 @@ export const getPingboards = async (user) => {
   try {
     const response = await getDocs(userPingboardsQuery);
 
-    return response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    const responseData = [];
+
+    for (const doc of response.docs) {
+      const docData = doc.data();
+
+      const pins = [];
+
+      for (const pin of docData.pins) {
+        const pinData = await getPin(pin.id);
+
+        pins.push(pinData);
+      }
+
+      responseData.push({ ...docData, pins, id: doc.id });
+    }
+
+    return responseData;
   } catch (e) {
     console.log(e);
     return false;
