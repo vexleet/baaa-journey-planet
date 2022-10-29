@@ -2,6 +2,7 @@ import SearchBar from '../../components/SearchBar';
 import { getPins } from '@/services/pins.js';
 import { useEffect, useState } from 'react';
 import PinCard from '../../components/PinCard';
+import Toggler from '../../components/Toggler';
 
 const categories = ['restaurant', 'bar'];
 
@@ -9,6 +10,8 @@ const Discover = () => {
   const [originalPins, setOriginalPins] = useState([]);
   const [filteredPins, setFilteredPins] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const displayTogglerItems = ['Pings', 'People'];
+  const [displayPar, setDisplayPar] = useState(displayTogglerItems[0]);
 
   useEffect(() => {
     (async () => {
@@ -47,7 +50,13 @@ const Discover = () => {
           <image src=""></image>
         </button>
       </div>
-      <div></div>
+      <div>
+        <Toggler
+          items={displayTogglerItems}
+          setActiveItem={setDisplayPar}
+          activeItem={displayPar}
+        />
+      </div>
 
       {filteredPins.length > 0 && (
         <div>
