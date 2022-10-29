@@ -17,6 +17,7 @@ function SearchBar({ placeholder, originalPins, setFilteredPins, searchInput, se
 
   const clearInput = () => {
     setSearchInput('');
+    setFilteredPins(originalPins);
   };
 
   return (

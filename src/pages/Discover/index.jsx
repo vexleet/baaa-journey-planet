@@ -18,9 +18,20 @@ const Discover = () => {
         <p>Server side error, please refresh</p>;
       } else {
         setOriginalPins(pinsResponse);
+        setFilteredPins(pinsResponse);
       }
     })();
   }, []);
+
+  const renderFilteredPins = (category) => {
+    return [...filteredPins]
+      .filter((val) => val.category == category)
+      .map((value, i) => {
+        return (
+          <PinCard key={i} image={value.images[0]} name={value.name} location={value.location} />
+        );
+      });
+  };
 
   return (
     <main>
@@ -32,46 +43,18 @@ const Discover = () => {
         setSearchInput={setSearchInput}
       />
 
-      {filteredPins.length > 0 && searchInput && (
+      {filteredPins.length > 0 && (
         <div>
           {categories.map((category, i) => {
             return (
               <div key={i} style={{ height: '100%' }}>
-                <h2>{category}</h2>
-                <div className="dataResult">
-                  {[...filteredPins]
-                    .filter((val) => val.category == category)
-                    .map((value, i) => {
-                      return (
-                        <PinCard
-                          key={i}
-                          image={value.images[0]}
-                          name={value.name}
-                          location={value.location}
-                        />
-                      );
-                    })}
-                </div>
+                {searchInput.length == 0 && <h2>{category}</h2>}
+                <div className="dataResult">{renderFilteredPins(category)}</div>
               </div>
             );
           })}
         </div>
       )}
-
-      {/* {filteredPins.length !== 0 && searchInput && (
-        <div className="dataResult">
-          {filteredPins.slice(0, 15).map((value, key) => {
-            return (
-              <PinCard
-                image={value.images[0]}
-                name={value.name}
-                location={value.location}
-                key={key}
-              />
-            );
-          })}
-        </div>
-      )} */}
     </main>
   );
 };

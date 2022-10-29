@@ -41,7 +41,7 @@ const TextField = ({
             value={value}
             onChange={onChange}
             disabled={isDisabled}></input>
-          {value && (
+          {value && onClear && (
             <button className="searchClear" onClick={onClear}>
               X
             </button>
