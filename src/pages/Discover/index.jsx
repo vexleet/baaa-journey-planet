@@ -3,6 +3,7 @@ import { getPins } from '@/services/pins.js';
 import { useEffect, useState } from 'react';
 import Toggler from '../../components/Toggler';
 import PinCard from '@/components/PinCard/index.jsx';
+import TextField from '../../components/TextField/TextField';
 
 const categories = ['restaurant', 'bar'];
 
@@ -10,6 +11,7 @@ const Discover = () => {
   const [originalPins, setOriginalPins] = useState([]);
   const [filteredPins, setFilteredPins] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const displayTogglerItems = ['Pings', 'People'];
   const [displayPar, setDisplayPar] = useState(displayTogglerItems[0]);
 
@@ -26,14 +28,23 @@ const Discover = () => {
     })();
   }, []);
 
-  const renderFilteredPins = (category) => {
-    return [...filteredPins]
-      .filter((val) => val.category == category)
-      .map((value, i) => {
-        return (
-          <PinCard key={i} image={value.images[0]} name={value.name} location={value.location} />
-        );
-      });
+  const renderFilteredPins = (category, styles) => {
+    return (
+      <div style={{ ...styles }}>
+        {[...filteredPins]
+          .filter((val) => val.category == category)
+          .map((value, i) => {
+            return (
+              <PinCard
+                key={i}
+                image={value.images[0]}
+                name={value.name}
+                location={value.location}
+              />
+            );
+          })}
+      </div>
+    );
   };
 
   return (
@@ -47,7 +58,7 @@ const Discover = () => {
       />
       <div className="filterButton">
         <button>
-          <image src=""></image>
+          <image src="">Filter Btn</image>
         </button>
       </div>
       <div>
@@ -58,16 +69,52 @@ const Discover = () => {
         />
       </div>
 
-      {filteredPins.length > 0 && (
+      {displayPar === 'People' && (
         <div>
-          {categories.map((category, i) => {
-            return (
+          <h2>COMING SOON!</h2>
+          <p>If you want to be up-to-date with new features coming, get notified!</p>
+          <TextField
+            id="notify"
+            className="textfield-emailNotify"
+            placeholder={'email@mail.com'}
+            type="email"
+          />
+          <button>Notify</button>
+        </div>
+      )}
+
+      {displayPar === 'Pings' && filteredPins.length > 0 && (
+        <div>
+          {!selectedCategory ? (
+            categories.map((category, i) => (
               <div key={i} style={{ height: '100%' }}>
-                {!searchInput && <h2>{category}</h2>}
-                <div className="dataResult">{renderFilteredPins(category)}</div>
+                {!searchInput && (
+                  <button onClick={() => setSelectedCategory(categories[i])}>{category}</button>
+                )}
+                {searchInput ? (
+                  <div className="dataResult">{renderFilteredPins(category, {})}</div>
+                ) : (
+                  <div className="dataResult">
+                    {renderFilteredPins(category, {
+                      display: 'flex',
+                      flexDirection: 'row',
+                      flexWrap: 'no-wrap',
+                      overflow: 'scroll'
+                    })}
+                  </div>
+                )}
               </div>
-            );
-          })}
+            ))
+          ) : (
+            <div style={{ height: '100%' }}>
+              {!searchInput && (
+                <button onClick={() => setSelectedCategory(selectedCategory)}>
+                  {selectedCategory}
+                </button>
+              )}
+              <div className="dataResult">{renderFilteredPins(selectedCategory, {})}</div>
+            </div>
+          )}
         </div>
       )}
     </main>
