@@ -37,7 +37,7 @@ const Discover = () => {
   };
 
   return (
-    <main>
+    <main className="discover-wrapper">
       <SearchBar
         placeholder="Search..."
         originalPins={originalPins}
@@ -50,7 +50,7 @@ const Discover = () => {
           <image src=""></image>
         </button>
       </div>
-      <div>
+      <div className="discover-toggler">
         <Toggler
           items={displayTogglerItems}
           setActiveItem={setDisplayPar}
@@ -63,7 +63,7 @@ const Discover = () => {
           {categories.map((category, i) => {
             return (
               <div key={i} style={{ height: '100%' }}>
-                {!searchInput && <h2>{category}</h2>}
+                {!searchInput && <h2 className="category-title">{category}</h2>}
                 <div className="dataResult">{renderFilteredPins(category)}</div>
               </div>
             );

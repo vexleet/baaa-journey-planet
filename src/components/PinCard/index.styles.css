@@ -1,16 +1,22 @@
 .pin-card-wrapper {
-  background: red;
+  background: #ffff;
   flex-direction: column;
   display: inline-block;
   padding: 8px;
   border-radius: 10px;
   text-align: center;
+  box-shadow: 1px 3px 6px var(--shadow);
+  height: 200px;
+  width: 150px;
+  margin: 5px 10px 5px 10px;
 }
 
 .pin-image {
-  width: 120px;
+  width: 130px;
   max-height: 100px;
   object-fit: cover;
+  padding: 8px;
+  border-radius: 15px;
 }
 
 .pin-name {
