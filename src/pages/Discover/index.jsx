@@ -48,7 +48,7 @@ const Discover = () => {
   };
 
   return (
-    <main>
+    <main className="discover-wrapper">
       <SearchBar
         placeholder="Search..."
         originalPins={originalPins}
@@ -61,7 +61,7 @@ const Discover = () => {
           <image src="">Filter Btn</image>
         </button>
       </div>
-      <div>
+      <div className="discover-toggler">
         <Toggler
           items={displayTogglerItems}
           setActiveItem={setDisplayPar}

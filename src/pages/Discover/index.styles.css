@@ -1,0 +1,16 @@
+.discover-wrapper {
+  background-image: linear-gradient(white, var(--background));
+  background-repeat: repeat-x;
+  background-size: 100vh;
+  background-attachment: fixed;
+}
+
+.discover-toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-title {
+  font-size: 5px;
+}
