@@ -23,7 +23,7 @@ const TextField = ({
 
       {isTextArea ? (
         <textarea
-          className="textfield-textarea"
+          className="textfield-input"
           id={id}
           placeholder={placeholder}
           value={value}
