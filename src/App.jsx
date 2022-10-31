@@ -12,6 +12,7 @@ import PinsList from './pages/PinsList';
 import Discover from './pages/Discover';
 import LoadingScreen from './components/LoadingScreen';
 import PlanTrip from './pages/PlanTrip';
+import CreatePin from './pages/CreatePin';
 import Navigation from '@/components/Navigation';
 import MyProfile from '@/pages/MyProfile/index.jsx';
 
