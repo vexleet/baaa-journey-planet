@@ -8,11 +8,12 @@ import Login from '@/pages/Login/Login.jsx';
 import GuestGuard from '@/guards/GuestGuard.jsx';
 import ChooseCategories from '@/pages/ChooseCategories/ChooseCategories.jsx';
 import Register from '@/pages/Register/Register.jsx';
-import Navigation from '@/components/Navigation/Navigation.jsx';
 import PinsList from './pages/PinsList';
-import CreatePin from './pages/CreatePin';
+import Discover from './pages/Discover';
 import LoadingScreen from './components/LoadingScreen';
 import PlanTrip from './pages/PlanTrip';
+import Navigation from '@/components/Navigation';
+import MyProfile from '@/pages/MyProfile/index.jsx';
 
 function App() {
   const { user, isInitialized } = useTokenContext();
@@ -24,7 +25,7 @@ function App() {
   }, [user]);
 
   return isInitialized ? (
-    <div style={{ height: '100%' }}>
+    <div style={{ paddingBottom: user ? 50 : 0 }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AuthGuard outlet={<PinsList />} />} />
@@ -33,6 +34,8 @@ function App() {
           <Route path="/choose-categories" element={<AuthGuard outlet={<ChooseCategories />} />} />
           <Route path="/create-pin" element={<AuthGuard outlet={<CreatePin />} />} />
           <Route path="/plan-trip" element={<AuthGuard outlet={<PlanTrip />} />} />
+          <Route path="/profile" element={<AuthGuard outlet={<MyProfile />} />} />
+          <Route path="/discover" element={<AuthGuard outlet={<Discover />} />} />
         </Routes>
         {user && <Navigation />}
       </BrowserRouter>

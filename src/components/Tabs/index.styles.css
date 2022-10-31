@@ -1,0 +1,10 @@
+.tabs {
+  display: flex;
+  column-gap: 20px;
+}
+
+.selected-tab {
+  /*TODO CHANGE TO VARIABLE*/
+  /*I diiiid it:))*/
+  border-bottom: 3px solid var(--selected);
+}

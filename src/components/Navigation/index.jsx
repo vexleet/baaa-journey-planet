@@ -1,9 +1,10 @@
 import NavigationItem from '@/components/Navigation/NavigationItem.jsx';
+import './index.styles.css';
 
 const Navigation = () => {
   const navigationItems = [
     {
-      linkTo: '/',
+      linkTo: '/discover',
       icon: 'src/assets/icons/home.svg'
     },
     {
@@ -15,22 +16,12 @@ const Navigation = () => {
       icon: 'src/assets/icons/send.svg'
     },
     {
-      linkTo: '/',
+      linkTo: '/profile',
       icon: 'src/assets/icons/user.svg'
     }
   ];
   return (
-    <div
-      style={{
-        display: 'flex',
-        background: '#355959',
-        justifyContent: 'space-around',
-        position: 'fixed',
-        bottom: 0,
-        width: '100%',
-        paddingTop: 5,
-        paddingBottom: 5
-      }}>
+    <div className="navigation-wrapper">
       {navigationItems.map((item) => (
         <NavigationItem key={item.linkTo} linkTo={item.linkTo} src={item.icon} />
       ))}

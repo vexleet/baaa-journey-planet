@@ -1,0 +1,63 @@
+import PropTypes from 'prop-types';
+import SmallCard from '@/components/SmallCard/index.jsx';
+import CreateTrip from '@/components/CreateTrip/index.jsx';
+import { useState } from 'react';
+import MyProfileTabLayout from '@/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
+
+const MyProfileTripsList = ({ trips, onAddTrip }) => {
+  const [loading, setLoading] = useState(false);
+
+  const [addTripIsOpen, setAddTripIsOpen] = useState(false);
+
+  const tripsList = () => {
+    return trips.map((trip, index) => (
+      <SmallCard
+        image={trip.image}
+        title={trip.country}
+        subtitle={`${trip.startDate}\n${trip.endDate}`}
+        key={trip.id + index}
+      />
+    ));
+  };
+
+  const openAddPin = () => setAddTripIsOpen(true);
+
+  const handleAddTripSuccess = async () => {
+    setLoading(true);
+    await onAddTrip();
+    setLoading(false);
+  };
+
+  return (
+    <>
+      <MyProfileTabLayout
+        items={trips}
+        handleAddSuccess={handleAddTripSuccess}
+        handleOpenAddItem={openAddPin}
+        loading={loading}
+        renderChildren={tripsList}
+      />
+
+      <CreateTrip
+        isVisible={addTripIsOpen}
+        setIsVisible={setAddTripIsOpen}
+        handleSuccess={onAddTrip}
+      />
+    </>
+  );
+};
+
+MyProfileTripsList.propTypes = {
+  trips: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string,
+      country: PropTypes.string,
+      city: PropTypes.string,
+      startDate: PropTypes.string,
+      endDate: PropTypes.string
+    })
+  ),
+  onAddTrip: PropTypes.func
+};
+
+export default MyProfileTripsList;

@@ -25,9 +25,10 @@ const Login = () => {
   return (
     <div className="login-wrapper">
       <img className="logo" src="src/assets/images/logo.svg" alt="Journey Planet Logo" />
+      <p className="app-name"> Plan B</p>
       <GoogleLoginButton />
 
-      <p style={{ marginTop: 15, marginBottom: 15 }}>or</p>
+      <p style={{ marginTop: 20, marginBottom: 15, color: 'var(--lightgrey)' }}>or</p>
 
       <form onSubmit={submitLogin} className="login-form">
         <TextField
@@ -48,12 +49,12 @@ const Login = () => {
 
         <Link to="/forgot-password">Forgot password?</Link>
 
-        <button type="submit" className="login-form-submit">
+        <button type="submit" className="primary-button">
           Log in
         </button>
       </form>
 
-      <p style={{ marginTop: 30 }}>
+      <p style={{ marginTop: 30, color: 'var(--lightgrey' }}>
         No account? <Link to="/register">Sign up</Link>
       </p>
 
