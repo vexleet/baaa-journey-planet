@@ -9,7 +9,6 @@ import GuestGuard from '@/guards/GuestGuard.jsx';
 import ChooseCategories from '@/pages/ChooseCategories/ChooseCategories.jsx';
 import Register from '@/pages/Register/Register.jsx';
 import PinsList from './pages/PinsList';
-import CreatePin from './pages/CreatePin';
 import Discover from './pages/Discover';
 import LoadingScreen from './components/LoadingScreen';
 import Navigation from '@/components/Navigation';
@@ -32,7 +31,6 @@ function App() {
           <Route path="/login" element={<GuestGuard outlet={<Login />} />} />
           <Route path="/register" element={<GuestGuard outlet={<Register />} />} />
           <Route path="/choose-categories" element={<AuthGuard outlet={<ChooseCategories />} />} />
-          <Route path="/create-pin" element={<AuthGuard outlet={<CreatePin />} />} />
           <Route path="/profile" element={<AuthGuard outlet={<MyProfile />} />} />
           <Route path="/discover" element={<AuthGuard outlet={<Discover />} />} />
         </Routes>

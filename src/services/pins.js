@@ -1,10 +1,12 @@
 import { collection, getFirestore, addDoc, getDocs, doc, getDoc } from 'firebase/firestore';
 import firebase from '@/firebase.js';
 
+const path = 'pins';
+
 export const addPin = async (data) => {
   const db = getFirestore(firebase);
 
-  const pinsReference = collection(db, 'pins');
+  const pinsReference = collection(db, path);
 
   try {
     await addDoc(pinsReference, data);
@@ -19,7 +21,7 @@ export const addPin = async (data) => {
 export const getPins = async () => {
   const db = getFirestore(firebase);
 
-  const pinsReference = collection(db, 'pins');
+  const pinsReference = collection(db, path);
 
   try {
     const response = await getDocs(pinsReference);
@@ -34,7 +36,7 @@ export const getPins = async () => {
 export const getPin = async (pinId) => {
   const db = getFirestore(firebase);
 
-  const pinsReference = collection(db, 'pins');
+  const pinsReference = collection(db, path);
 
   const pinDocument = await doc(pinsReference, pinId);
   const pinDocumentSnapshot = await getDoc(pinDocument);
