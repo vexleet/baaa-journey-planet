@@ -1,50 +1,23 @@
 import TextField from '@/components/TextField/TextField.jsx';
-import GoBackArrow from '@/components/GoBackArrow/GoBackArrow.jsx';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { addPin } from '@/services/pins.js';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import app from '@/firebase.js';
 import { toast } from 'react-toastify';
+import { getImages } from '@/utils/getImages.js';
+import CreatePopupLayout from '@/layouts/CreatePopupLayout/index.jsx';
+import PropTypes from 'prop-types';
+import ChoosePicture from '@/components/ChoosePicture/index.jsx';
 
-const CreatePin = () => {
-  const navigate = useNavigate();
-
-  const storage = getStorage(app);
-
+const CreatePin = ({ isVisible, setIsVisible, handleSuccess }) => {
   const [pinName, setPinName] = useState('');
   const [pinLocation, setPinLocation] = useState('');
   const [pinDescription, setPinDescription] = useState('');
 
-  const [pinImages, setPinImages] = useState(null);
-
-  const handleImageUpload = (e) => {
-    if (e.target.files.length !== 0) setPinImages(e.target.files);
-  };
-
-  const getImages = async () => {
-    const imageUrls = [];
-
-    for (let i = 0; i < pinImages.length; i++) {
-      let img = pinImages.item(i);
-
-      const path = `/images/${img.name}`;
-      const storageRef = ref(storage, path);
-
-      const snapshot = await uploadBytes(storageRef, img);
-
-      const downloadUrl = await getDownloadURL(snapshot.ref);
-
-      imageUrls.push(downloadUrl);
-    }
-
-    return imageUrls;
-  };
+  const [pinImages, setPinImages] = useState([]);
 
   const createPin = async (e) => {
     e.preventDefault();
 
-    const images = await getImages();
+    const images = await getImages(pinImages);
 
     const response = await addPin({
       pinName: pinName,
@@ -55,63 +28,54 @@ const CreatePin = () => {
 
     if (response) {
       toast('Successfully added a pin', { type: 'success' });
-      navigate('/');
+      handleSuccess();
+      setIsVisible(false);
     } else {
       toast('Something went wrong with adding your pin! Try again.', { type: 'error' });
     }
   };
 
   return (
-    <div style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 40 }}>
-      <GoBackArrow onClick={() => navigate('/')} />
-      <h2 style={{ fontSize: 30, marginBottom: 20, marginTop: 10 }}>Create a pin</h2>
-
+    <CreatePopupLayout title="Create new ping" isVisible={isVisible} setIsVisible={setIsVisible}>
       <form onSubmit={createPin}>
+        <div style={{ marginBottom: 30 }}>
+          <ChoosePicture images={pinImages} handleImageChange={setPinImages} />
+        </div>
+
         <TextField
           id="pinName"
           value={pinName}
           onChange={(e) => setPinName(e.target.value)}
-          label="Pin Name"
+          label="Give a Name"
         />
+
         <TextField
           id="location"
           value={pinLocation}
           onChange={(e) => setPinLocation(e.target.value)}
-          label="Pin Location"
+          label="Give Location"
         />
+
         <TextField
           id="pinDescription"
           value={pinDescription}
           onChange={(e) => setPinDescription(e.target.value)}
-          label="Pin Description"
+          label="Write short description"
           isTextArea
         />
 
-        <div>
-          <input
-            type="file"
-            id="files"
-            name="files"
-            multiple
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-        </div>
-
-        <button
-          type="submit"
-          style={{
-            textAlign: 'center',
-            marginTop: 10,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            display: 'block'
-          }}>
+        <button type="submit" className="primary-button">
           Submit
         </button>
       </form>
-    </div>
+    </CreatePopupLayout>
   );
+};
+
+CreatePin.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  setIsVisible: PropTypes.func.isRequired,
+  handleSuccess: PropTypes.func
 };
 
 export default CreatePin;

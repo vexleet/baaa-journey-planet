@@ -1,0 +1,9 @@
+.choose-image-container {
+  width: 130px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  margin: 15px auto 0;
+  align-items: center;
+  box-shadow: inset 0 6px 8px var(--shadow);
+}
