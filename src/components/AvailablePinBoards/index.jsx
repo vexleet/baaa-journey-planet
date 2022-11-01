@@ -16,11 +16,14 @@ const AvailablePinBoards = () => {
   }, []);
 
   return (
-    <div>
-      <PinBoard images={availablePinboards.slice(0, 3).map((x) => x.images[0])} />
-      <PinBoard images={availablePinboards.slice(3, 6).map((x) => x.images[0])} />
-      <PinBoard images={availablePinboards.slice(6, 9).map((x) => x.images[0])} />
-      <PinBoard images={availablePinboards.slice(9, 12).map((x) => x.images[0])} />
+    <div className="pinBoardsWrapper">
+      <PinBoard title={'Title 1'} images={availablePinboards.slice(0, 3).map((x) => x.images[0])} />
+      <PinBoard title={'Title 2'} images={availablePinboards.slice(3, 6).map((x) => x.images[0])} />
+      <PinBoard title={'Title 3'} images={availablePinboards.slice(6, 9).map((x) => x.images[0])} />
+      <PinBoard
+        title={'Title 4'}
+        images={availablePinboards.slice(9, 12).map((x) => x.images[0])}
+      />
     </div>
   );
 };

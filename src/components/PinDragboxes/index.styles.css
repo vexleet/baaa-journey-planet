@@ -1,0 +1,18 @@
+.dragboxes-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.dragbox {
+  background-color: rgba(255, 255, 255, 0.46);
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.dragbox-content {
+  font-size: 20px;
+}
