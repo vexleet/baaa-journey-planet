@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { addCategories, getCategories } from '@/services/categories.js';
-import CategoryChoose from '@/pages/ChooseCategories/subcomponents/CategoryChoose.jsx';
+import { addCategories, getCategories } from '@/src/services/categories.js';
+import CategoryChoose from '@/src/pages/ChooseCategories/subcomponents/CategoryChoose.jsx';
 import './ChooseCategories.styles.css';
-import GoBackArrow from '@/components/GoBackArrow/GoBackArrow.jsx';
-import { useTokenContext } from '@/context/TokenContext.jsx';
+import GoBackArrow from '@/src/components/GoBackArrow/GoBackArrow.jsx';
+import { useTokenContext } from '@/src/context/TokenContext.jsx';
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
