@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import TextField from '@/components/TextField/TextField.jsx';
+import TextField from '@/src/components/TextField/TextField.jsx';
 import PropTypes from 'prop-types';
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 import '@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import './index.css';
-import CreatePopupLayout from '@/layouts/CreatePopupLayout/index.jsx';
-import { addTrip } from '@/services/trip.js';
-import { getImages } from '@/utils/getImages.js';
+import CreatePopupLayout from '@/src/layouts/CreatePopupLayout/index.jsx';
+import { addTrip } from '@/src/services/trip.js';
+import { getImages } from '@/src/utils/getImages.js';
 import { toast } from 'react-toastify';
-import { useTokenContext } from '@/context/TokenContext.jsx';
-import ChoosePicture from '@/components/ChoosePicture/index.jsx';
+import { useTokenContext } from '@/src/context/TokenContext.jsx';
+import ChoosePicture from '@/src/components/ChoosePicture/index.jsx';
 
 const CreateTrip = ({ isVisible, setIsVisible, handleSuccess }) => {
   const { user } = useTokenContext();

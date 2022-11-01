@@ -1,6 +1,6 @@
 import { addDoc, collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
-import firebase from '@/firebase.js';
-import { getPin } from '@/services/pins.js';
+import firebase from '@/src/firebase.js';
+import { getPin } from '@/src/services/pins.js';
 
 const path = 'pingboards';
 
@@ -12,7 +12,7 @@ const path = 'pingboards';
  *
  *   pins: string[]
  *
- *   privacy: private/public
+ *   privacy: private
  *
  *   createdBy: user id
  *
@@ -51,7 +51,7 @@ export const getPingboards = async (user) => {
       const pins = [];
 
       for (const pin of docData.pins) {
-        const pinData = await getPin(pin.id);
+        const pinData = await getPin(pin);
 
         pins.push(pinData);
       }
