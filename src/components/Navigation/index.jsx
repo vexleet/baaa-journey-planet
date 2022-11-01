@@ -4,14 +4,13 @@ import './index.styles.css';
 const Navigation = () => {
   const navigationItems = [
     {
-
       linkTo: '/home',
       icon: 'src/assets/icons/search.svg'
     },
     {
       linkTo: '/discover',
-      icon: 'src/assets/icons/home.svg' 
-    }, 
+      icon: 'src/assets/icons/home.svg'
+    },
     {
       linkTo: '/',
       icon: '/icons/send.svg'
