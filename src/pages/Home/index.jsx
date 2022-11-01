@@ -45,7 +45,7 @@ const Home = () => {
     <>
       {loading === false ? (
         <main>
-          <h1>{user.displayName}</h1>
+          <h1>Hello, {user.displayName}</h1>
           {getChildren()}
         </main>
       ) : (
