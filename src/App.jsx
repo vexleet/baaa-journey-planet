@@ -13,6 +13,7 @@ import Discover from './pages/Discover';
 import LoadingScreen from './components/LoadingScreen';
 import Navigation from '@/components/Navigation';
 import MyProfile from '@/pages/MyProfile/index.jsx';
+import Home from './pages/Home';
 
 function App() {
   const { user, isInitialized } = useTokenContext();
@@ -33,6 +34,7 @@ function App() {
           <Route path="/choose-categories" element={<AuthGuard outlet={<ChooseCategories />} />} />
           <Route path="/profile" element={<AuthGuard outlet={<MyProfile />} />} />
           <Route path="/discover" element={<AuthGuard outlet={<Discover />} />} />
+          <Route path="/home" element={<AuthGuard outlet={<Home />} />} />
         </Routes>
         {user && <Navigation />}
       </BrowserRouter>
