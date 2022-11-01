@@ -94,3 +94,32 @@ button:focus-visible {
   background-color: var(--orange);
   box-shadow: 1px 3px 6px var(--shadow);
 }
+
+.discover-toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-title {
+  font-size: 20px;
+  margin-left: 12px;
+  margin-top: 15px;
+}
+
+.dataResult::-webkit-scrollbar {
+  height: 8px;
+}
+
+.dataResult::-webkit-scrollbar-thumb,
+.dataResult::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.dataResult::-webkit-scrollbar-thumb {
+  background: var(--lightgrey);
+}
+
+.searchClear button {
+  background-color: rgb(255, 255, 255);
+}
