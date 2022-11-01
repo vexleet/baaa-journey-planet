@@ -9,7 +9,7 @@ function SearchBar({ placeholder, originalPins, setFilteredPins, searchInput, se
     setSearchInput(wordEntered);
 
     const newFilter = originalPins.filter((value) => {
-      return value.name.toLowerCase().includes(wordEntered.toLowerCase());
+      return value.name?.toLowerCase().includes(wordEntered.toLowerCase());
     });
 
     setFilteredPins(newFilter);

@@ -7,16 +7,21 @@
   text-align: center;
   box-shadow: 1px 3px 6px var(--shadow);
   height: 200px;
-  width: 150px;
+  width: 140px;
   margin: 5px 10px 5px 10px;
 }
 
 .pin-image {
-  width: 130px;
-  max-height: 100px;
+  width: 120px;
+  height: 90px;
   object-fit: cover;
   padding: 8px;
   border-radius: 15px;
+}
+.pin-name-box p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .pin-name {
@@ -25,4 +30,5 @@
 
 .pin-location {
   font-size: 12px;
+  margin-top: 15px;
 }

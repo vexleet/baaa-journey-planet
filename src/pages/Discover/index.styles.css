@@ -14,3 +14,31 @@
 .category-title {
   font-size: 5px;
 }
+
+.filterBtn {
+  background-color: transparent;
+}
+.searchHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: 15vw;
+}
+.filterBtn img {
+  justify-content: center;
+  align-items: center;
+}
+
+.categoryBtn {
+  background-color: transparent;
+}
+
+.dataResult {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  margin: 10px 5px 20px 10px;
+  padding-bottom: 5px;
+}
