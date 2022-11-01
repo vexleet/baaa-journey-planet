@@ -119,3 +119,7 @@ button:focus-visible {
 .dataResult::-webkit-scrollbar-thumb {
   background: var(--lightgrey);
 }
+
+.searchClear button {
+  background-color: rgb(255, 255, 255);
+}

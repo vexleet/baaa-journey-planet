@@ -1,12 +1,10 @@
 .search {
   display: flex;
   justify-content: center;
-  margin-top: 60px;
 }
 
-.searchInputs {
-  margin-top: 105px;
-  display: flex;
+.searchInput {
+  height: 6vh;
 }
 
 .search input {
@@ -45,6 +43,9 @@ a:hover {
 
 .searchClear {
   cursor: pointer;
-  background-color: black;
-  margin-left: 150px;
+  background-color: transparent;
+  color: blue;
+  position: relative;
+  left: 55vw;
+  bottom: 6.7vh;
 }

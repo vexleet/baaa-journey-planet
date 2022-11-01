@@ -5,20 +5,6 @@
   row-gap: 10px;
 }
 
-.dataResult {
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  margin: 10px 5px 20px 10px;
-  padding-bottom: 5px;
-}
-
 .chip-wrapper {
   flex: 1;
-}
-
-.pin-card-wrapper {
-  scroll-snap-align: start;
-  transition: all 0.2s;
-  flex-basis: calc(50% - 10px);
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Toggler from '../../components/Toggler';
 import PinCard from '@/src/components/PinCard/index.jsx';
 import TextField from '../../components/TextField/TextField';
+import './index.styles.css';
 
 const categories = ['restaurant', 'bar'];
 
@@ -49,16 +50,17 @@ const Discover = () => {
 
   return (
     <main className="discover-wrapper">
-      <SearchBar
-        placeholder="Search..."
-        originalPins={originalPins}
-        setFilteredPins={setFilteredPins}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-      />
-      <div className="filterButton">
-        <button>
-          <image src="">Filter Btn</image>
+      <div className="searchHeader">
+        <SearchBar
+          placeholder="Search..."
+          originalPins={originalPins}
+          setFilteredPins={setFilteredPins}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+        />
+
+        <button className="filterBtn">
+          <img src="../src/assets/icons/filter.svg"></img>
         </button>
       </div>
       <div className="discover-toggler">
@@ -69,7 +71,7 @@ const Discover = () => {
         />
       </div>
 
-      {displayPar === 'People' && (
+      {displayPar === displayTogglerItems[1] && (
         <div>
           <h2>COMING SOON!</h2>
           <p>If you want to be up-to-date with new features coming, get notified!</p>
@@ -83,13 +85,17 @@ const Discover = () => {
         </div>
       )}
 
-      {displayPar === 'Pings' && filteredPins.length > 0 && (
+      {displayPar === displayTogglerItems[0] && filteredPins.length > 0 && (
         <div>
           {!selectedCategory ? (
             categories.map((category, i) => (
               <div key={i} style={{ height: '100%' }}>
                 {!searchInput && (
-                  <button onClick={() => setSelectedCategory(categories[i])}>{category}</button>
+                  <button
+                    className="categoryBtn text"
+                    onClick={() => setSelectedCategory(categories[i])}>
+                    {category}
+                  </button>
                 )}
                 {searchInput ? (
                   <div className="dataResult">{renderFilteredPins(category, {})}</div>
@@ -98,8 +104,7 @@ const Discover = () => {
                     {renderFilteredPins(category, {
                       display: 'flex',
                       flexDirection: 'row',
-                      flexWrap: 'no-wrap',
-                      overflow: 'scroll'
+                      flexWrap: 'no-wrap'
                     })}
                   </div>
                 )}
@@ -108,7 +113,9 @@ const Discover = () => {
           ) : (
             <div style={{ height: '100%' }}>
               {!searchInput && (
-                <button onClick={() => setSelectedCategory(selectedCategory)}>
+                <button
+                  className="categoryBtn text"
+                  onClick={() => setSelectedCategory(selectedCategory)}>
                   {selectedCategory}
                 </button>
               )}
