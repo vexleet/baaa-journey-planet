@@ -9,11 +9,11 @@ const MyProfileTripsList = ({ trips, onAddTrip }) => {
 
   const [addTripIsOpen, setAddTripIsOpen] = useState(false);
 
-  const tripsList = () => {
-    return trips.map((trip, index) => (
+  const tripsList = (tripItems) => {
+    return tripItems.map((trip, index) => (
       <SmallCard
         image={trip.image}
-        title={trip.country}
+        title={trip.name}
         subtitle={`${trip.startDate}\n${trip.endDate}`}
         key={trip.id + index}
       />

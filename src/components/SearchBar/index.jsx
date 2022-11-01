@@ -30,7 +30,7 @@ function SearchBar({ placeholder, originalPins, setFilteredPins, searchInput, se
           onClear={clearInput}
           value={searchInput}
           placeholder={placeholder}
-          type="search"
+          type="text"
         />
       </div>
     </div>

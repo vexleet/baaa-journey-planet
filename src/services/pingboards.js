@@ -1,4 +1,14 @@
-import { addDoc, collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  arrayUnion,
+  updateDoc,
+  getDocs,
+  getFirestore,
+  query,
+  where
+} from 'firebase/firestore';
 import firebase from '@/firebase.js';
 import { getPin } from '@/services/pins.js';
 
@@ -51,7 +61,7 @@ export const getPingboards = async (user) => {
       const pins = [];
 
       for (const pin of docData.pins) {
-        const pinData = await getPin(pin.id);
+        const pinData = await getPin(pin);
 
         pins.push(pinData);
       }
@@ -60,6 +70,27 @@ export const getPingboards = async (user) => {
     }
 
     return responseData;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
+export const addPinToPingboard = async (pingboard, pinToAdd) => {
+  const db = getFirestore(firebase);
+
+  const pingboardsReference = collection(db, path);
+  const pinsReference = collection(db, 'pins');
+
+  const pinDocument = await doc(pinsReference, pinToAdd.id);
+  const pingboardDocument = await doc(pingboardsReference, pingboard.id);
+
+  try {
+    await updateDoc(pingboardDocument, {
+      pins: arrayUnion(pinDocument.id)
+    });
+
+    return true;
   } catch (e) {
     console.log(e);
     return false;

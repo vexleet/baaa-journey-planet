@@ -3,20 +3,18 @@ import SmallCard from '@/components/SmallCard/index.jsx';
 import MyProfileTabLayout from '@/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
 import { useState } from 'react';
 import CreatePin from '@/pages/CreatePin/index.jsx';
+import SelectPingboard from '@/components/SelectPingboard/index.jsx';
 
 const MyProfilePinsList = ({ pins, onAddPin }) => {
   const [loading, setLoading] = useState(false);
 
   const [addPinIsOpen, setAddPinIsOpen] = useState(false);
 
-  const pinsList = () => {
-    return pins.map((pin, index) => (
-      <SmallCard
-        image={pin.images[0]}
-        title={pin.name}
-        subtitle={pin.location}
-        key={pin.id + index}
-      />
+  const pinsList = (pinItems) => {
+    return pinItems.map((pin, index) => (
+      <SelectPingboard pin={pin} key={pin.id + index}>
+        <SmallCard image={pin.images[0]} title={pin.name} subtitle={pin.location} />
+      </SelectPingboard>
     ));
   };
 

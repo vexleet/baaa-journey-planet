@@ -39,7 +39,7 @@ const MyProfileTabLayout = ({ renderChildren, items, handleOpenAddItem, loading 
             <>
               <div style={{ width: '70%', margin: '0 auto' }}>
                 <SearchBar
-                  placeholder="Search for pingboard"
+                  placeholder="Search"
                   originalPins={items}
                   setFilteredPins={setFilteredBoards}
                   searchInput={searchInput}

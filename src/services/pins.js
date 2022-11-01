@@ -41,5 +41,7 @@ export const getPin = async (pinId) => {
   const pinDocument = await doc(pinsReference, pinId);
   const pinDocumentSnapshot = await getDoc(pinDocument);
 
-  return pinDocumentSnapshot.data();
+  const pinData = pinDocumentSnapshot.data();
+
+  return { ...pinData, id: pinDocumentSnapshot.id };
 };

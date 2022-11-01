@@ -19,7 +19,7 @@ const PingBoardImages = ({ images }) => {
             borderRadius: index > 0 ? '0 10px 10px 0' : 10,
             marginLeft: index > 0 ? -10 : 0,
             objectFit: 'cover',
-            zIndex: -index + 5
+            zIndex: 5 - index
           }}
         />
       ))}
