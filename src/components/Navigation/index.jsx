@@ -1,23 +1,24 @@
-import NavigationItem from '@/components/Navigation/NavigationItem.jsx';
+import NavigationItem from '@/src/components/Navigation/NavigationItem.jsx';
 import './index.styles.css';
 
 const Navigation = () => {
   const navigationItems = [
     {
+
       linkTo: '/home',
       icon: 'src/assets/icons/search.svg'
     },
     {
       linkTo: '/discover',
-      icon: 'src/assets/icons/home.svg'
-    },
+      icon: 'src/assets/icons/home.svg' 
+    }, 
     {
       linkTo: '/',
-      icon: 'src/assets/icons/send.svg'
+      icon: '/icons/send.svg'
     },
     {
       linkTo: '/profile',
-      icon: 'src/assets/icons/user.svg'
+      icon: '/icons/user.svg'
     }
   ];
   return (
