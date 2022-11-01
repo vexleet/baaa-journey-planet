@@ -23,7 +23,7 @@ const PinDetails = () => {
             alignItems: 'center'
           }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <img src="src/assets/images/default-user.svg" width={50} height={50} />
+            <img src="/images/default-user.svg" width={50} height={50} />
             <div>
               <p style={{ fontSize: 16, marginBottom: 4 }}>Username</p>
               <p style={{ fontSize: 13 }}>100 followers</p>

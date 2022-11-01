@@ -3,6 +3,9 @@
   margin-bottom: 4px;
 }
 
+.textfield {
+}
+
 .textfield-input {
   display: block;
   border-radius: 10px;
@@ -15,18 +18,4 @@
   box-sizing: border-box;
   margin-bottom: 12px;
   box-shadow: 1px 3px 6px var(--shadow);
-}
-
-.textfield-textarea {
-  display: block;
-  border-radius: 20px;
-  background-color: #fff;
-  width: 100%;
-  padding: 10px 0 10px 10px;
-  color: #000;
-  outline: none;
-  border: none;
-  box-sizing: border-box;
-  margin-bottom: 12px;
-  max-width: 100%;
 }

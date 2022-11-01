@@ -1,10 +1,17 @@
 import PropTypes from 'prop-types';
-import SmallPinCard from '@/components/SmallPinCard/index.jsx';
+import SmallCard from '@/src/components/SmallCard/index.jsx';
+import MyProfileTabLayout from '@/src/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
+import { useState } from 'react';
+import CreatePin from '@/src/pages/CreatePin/index.jsx';
 
-const MyProfilePinsList = ({ pins }) => {
+const MyProfilePinsList = ({ pins, onAddPin }) => {
+  const [loading, setLoading] = useState(false);
+
+  const [addPinIsOpen, setAddPinIsOpen] = useState(false);
+
   const pinsList = () => {
     return pins.map((pin, index) => (
-      <SmallPinCard
+      <SmallCard
         image={pin.images[0]}
         title={pin.name}
         subtitle={pin.location}
@@ -13,17 +20,30 @@ const MyProfilePinsList = ({ pins }) => {
     ));
   };
 
+  const openAddPin = () => setAddPinIsOpen(true);
+
+  const handleAddPinSuccess = async () => {
+    setLoading(true);
+    await onAddPin();
+    setLoading(false);
+  };
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        rowGap: 25,
-        columnGap: 55,
-        justifyContent: 'center'
-      }}>
-      {pinsList()}
-    </div>
+    <>
+      <MyProfileTabLayout
+        items={pins}
+        handleAddSuccess={handleAddPinSuccess}
+        handleOpenAddItem={openAddPin}
+        loading={loading}
+        renderChildren={pinsList}
+      />
+
+      <CreatePin
+        setIsVisible={setAddPinIsOpen}
+        isVisible={addPinIsOpen}
+        handleSuccess={handleAddPinSuccess}
+      />
+    </>
   );
 };
 
@@ -37,7 +57,8 @@ MyProfilePinsList.propTypes = {
       coordinates: PropTypes.arrayOf(PropTypes.number),
       images: PropTypes.arrayOf(PropTypes.string)
     })
-  ).isRequired
+  ).isRequired,
+  onAddPin: PropTypes.func
 };
 
 export default MyProfilePinsList;

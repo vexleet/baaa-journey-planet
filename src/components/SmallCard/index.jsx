@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './index.styles.css';
 
-const SmallPinCard = ({ image, subtitle, title }) => {
+const SmallCard = ({ image, subtitle, title }) => {
   return (
     <div className="small-pin">
       <img className="small-pin-image" src={image} />
@@ -11,7 +11,7 @@ const SmallPinCard = ({ image, subtitle, title }) => {
   );
 };
 
-SmallPinCard.propTypes = {
+SmallCard.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string
@@ -26,4 +26,4 @@ SmallPinCard.propTypes = {
   // })
 };
 
-export default SmallPinCard;
+export default SmallCard;

@@ -1,29 +1,48 @@
 import PropTypes from 'prop-types';
-import SmallPinCard from '@/components/SmallPinCard/index.jsx';
-import CreateTrip from '@/components/CreateTrip/index.jsx';
+import SmallCard from '@/src/components/SmallCard/index.jsx';
+import CreateTrip from '@/src/components/CreateTrip/index.jsx';
 import { useState } from 'react';
+import MyProfileTabLayout from '@/src/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
 
-const MyProfileTripsList = ({ trips }) => {
+const MyProfileTripsList = ({ trips, onAddTrip }) => {
+  const [loading, setLoading] = useState(false);
+
   const [addTripIsOpen, setAddTripIsOpen] = useState(false);
 
   const tripsList = () => {
     return trips.map((trip, index) => (
-      <SmallPinCard
+      <SmallCard
         image={trip.image}
         title={trip.country}
-        subtitle={`${trip.startDate}-${trip.endDate}`}
+        subtitle={`${trip.startDate}\n${trip.endDate}`}
         key={trip.id + index}
       />
     ));
   };
 
+  const openAddPin = () => setAddTripIsOpen(true);
+
+  const handleAddTripSuccess = async () => {
+    setLoading(true);
+    await onAddTrip();
+    setLoading(false);
+  };
+
   return (
     <>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, justifyContent: 'center' }}>
-        {tripsList()}
-      </div>
+      <MyProfileTabLayout
+        items={trips}
+        handleAddSuccess={handleAddTripSuccess}
+        handleOpenAddItem={openAddPin}
+        loading={loading}
+        renderChildren={tripsList}
+      />
 
-      <CreateTrip isVisible={addTripIsOpen} setIsVisible={setAddTripIsOpen} />
+      <CreateTrip
+        isVisible={addTripIsOpen}
+        setIsVisible={setAddTripIsOpen}
+        handleSuccess={onAddTrip}
+      />
     </>
   );
 };
@@ -37,7 +56,8 @@ MyProfileTripsList.propTypes = {
       startDate: PropTypes.string,
       endDate: PropTypes.string
     })
-  )
+  ),
+  onAddTrip: PropTypes.func
 };
 
 export default MyProfileTripsList;
