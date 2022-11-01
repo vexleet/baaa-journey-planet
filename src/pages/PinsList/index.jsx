@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getPins } from '@/services/pins.js';
+import { getPins } from '@/src/services/pins.js';
 import PinCard from '../../components/PinCard';
 
 const PinsList = () => {

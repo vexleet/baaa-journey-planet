@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import TextField from '@/components/TextField/TextField.jsx';
+import TextField from '@/src/components/TextField/TextField.jsx';
 import { toast } from 'react-toastify';
 import './Register.styles.css';
-import GoBackArrow from '@/components/GoBackArrow/GoBackArrow.jsx';
+import GoBackArrow from '@/src/components/GoBackArrow/GoBackArrow.jsx';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
