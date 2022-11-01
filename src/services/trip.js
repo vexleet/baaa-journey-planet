@@ -79,7 +79,7 @@ export const getTrip = async (id) => {
 
 export const addPinToTrip = async (tripId, pinId, type) => {
   const db = getFirestore();
-  console.log(tripId, pinId, type);
+  console.log(type);
   const tripReference = doc(db, path, tripId);
 
   try {

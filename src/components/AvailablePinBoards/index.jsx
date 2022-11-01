@@ -19,7 +19,7 @@ const AvailablePinBoards = () => {
 
     fetchPins();
   }, []);
-  console.log('daaa', availablePinboards[pickedBoard]);
+
   return (
     <div className="pinBoardsWrapper">
       {pickedBoard === -1 &&

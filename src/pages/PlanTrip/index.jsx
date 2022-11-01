@@ -25,7 +25,6 @@ const PlanTrip = () => {
   useEffect(() => {
     const fetchTrip = async () => {
       const result = await getTrip(id);
-      console.log('sweet child in time');
       setCurrentTrip(result);
       setUpdated(true);
     };
@@ -35,16 +34,14 @@ const PlanTrip = () => {
     }
   }, [id, updated]);
 
-  console.log('budala', currentTrip);
   const onDragEnd = (result) => {
     setDroppedPinId(result.draggableId);
     setDraggingsStyles({ opacity: 0 });
   };
-  const onDragUpdate = (result) => console.log('daa', document.getElementById(result.dr));
   const onDragStart = () => setDraggingsStyles({ opacity: 0.2 });
 
   return (
-    <DragDropContext onDragEnd={onDragEnd} onDragUpdate={onDragUpdate} onDragStart={onDragStart}>
+    <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
       <Droppable droppableId="SomeId">
         {(provided) => (
           <div
