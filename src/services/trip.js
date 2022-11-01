@@ -1,5 +1,15 @@
-import { addDoc, collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  query,
+  updateDoc,
+  where
+} from 'firebase/firestore';
 import firebase from '@/firebase.js';
+import { getPin } from './pins';
 
 const path = 'trips';
 
@@ -36,6 +46,46 @@ export const getTrips = async (user) => {
     }
 
     return responseData;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
+export const getTrip = async (id) => {
+  const db = getFirestore(firebase);
+
+  const tripsReference = collection(db, path);
+  const userTripsQuery = query(tripsReference, where('__name__', '==', id));
+
+  try {
+    const response = await getDocs(userTripsQuery);
+
+    const result = response.docs[0].data();
+
+    if (result.morning) {
+      result.morningPins = [];
+      for (const pin of result.morning) {
+        result.morningPins.push(await getPin(pin));
+      }
+    }
+
+    return result;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
+export const addPinToTrip = async (tripId, pinId, type) => {
+  const db = getFirestore();
+  console.log(tripId, pinId, type);
+  const tripReference = doc(db, path, tripId);
+
+  try {
+    await updateDoc(tripReference, { morning: [pinId] });
+
+    return true;
   } catch (e) {
     console.log(e);
     return false;

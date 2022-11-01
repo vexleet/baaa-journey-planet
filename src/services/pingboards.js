@@ -51,7 +51,7 @@ export const getPingboards = async (user) => {
       const pins = [];
 
       for (const pin of docData.pins) {
-        const pinData = await getPin(pin.id);
+        const pinData = await getPin(pin);
 
         pins.push(pinData);
       }
