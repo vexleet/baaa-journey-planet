@@ -1,6 +1,6 @@
 // Plamen Michev
 import './index.styles.css';
-import logoSvg from '@/public/images/logo.svg';
+import logoSvg from '../../assets/images/logo.svg';
 
 const LoadingScreen = () => {
   return (
