@@ -10,7 +10,7 @@ import ChooseCategories from '@/src/pages/ChooseCategories/ChooseCategories.jsx'
 import Register from '@/src/pages/Register/Register.jsx';
 import PinsList from './pages/PinsList';
 import Discover from './pages/Discover';
-import LoadingScreen from './components/LoadingScreen';
+import LoadingScreen from '@/src/LoadingScreen';
 import Home from './pages/Home';
 import Navigation from '@/src/components/Navigation';
 import MyProfile from '@/src/pages/MyProfile/index.jsx';

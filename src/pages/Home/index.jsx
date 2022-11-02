@@ -1,10 +1,10 @@
 //Made By Valentinas Markulis
 import './index.styles.css';
-import { useTokenContext } from '@/context/TokenContext.jsx';
+import { useTokenContext } from '@/src/context/TokenContext.jsx';
 import { useState, useEffect } from 'react';
-import { getTrips } from '@/services/trip.js';
-import LoadingScreen from '../../components/LoadingScreen';
-import SmallCard from '@/components/SmallCard/index.jsx';
+import { getTrips } from '@/src/services/trip.js';
+import LoadingScreen from '@/src/LoadingScreen';
+import SmallCard from '@/src/components/SmallCard/index.jsx';
 
 const Home = () => {
   const { user } = useTokenContext();

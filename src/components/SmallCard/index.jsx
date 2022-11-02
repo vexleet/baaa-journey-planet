@@ -15,15 +15,6 @@ SmallCard.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string
-  // pin: PropTypes.shape({
-  //   name: PropTypes.string,
-  //   location: PropTypes.string,
-  //   category: PropTypes.string,
-  //   description: PropTypes.string,
-  //   coordinates: PropTypes.arrayOf(PropTypes.number),
-  //   address: PropTypes.string,
-  //   images: PropTypes.arrayOf(PropTypes.string)
-  // })
 };
 
 export default SmallCard;
