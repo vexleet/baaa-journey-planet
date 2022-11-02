@@ -1,3 +1,4 @@
+//Made by Valentinas Markulis
 import SearchBar from '../../components/SearchBar';
 import { getPins } from '@/services/pins.js';
 import { useEffect, useState } from 'react';
