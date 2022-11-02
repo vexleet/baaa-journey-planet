@@ -1,9 +1,12 @@
+//Kris
+
 import { useState } from 'react';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 import './Login.styles.css';
 import GoogleLoginButton from '@/src/components/GoogleLoginButton/GoogleLoginButton.jsx';
 import TextField from '@/src/components/TextField/TextField.jsx';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const authentication = getAuth();
@@ -17,8 +20,9 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(authentication, email, password);
     } catch (e) {
-      //TODO SHOW ERROR
-      console.log(e);
+      if (authentication) {
+        toast('Your email or password is incorrent. Please try again', { type: 'error' });
+      }
     }
   };
 
