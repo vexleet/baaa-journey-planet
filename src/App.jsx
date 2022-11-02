@@ -11,6 +11,7 @@ import Register from '@/src/pages/Register/Register.jsx';
 import PinsList from './pages/PinsList';
 import Discover from './pages/Discover';
 import LoadingScreen from './components/LoadingScreen';
+import Home from './pages/Home';
 import Navigation from '@/src/components/Navigation';
 import MyProfile from '@/src/pages/MyProfile/index.jsx';
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/choose-categories" element={<AuthGuard outlet={<ChooseCategories />} />} />
           <Route path="/profile" element={<AuthGuard outlet={<MyProfile />} />} />
           <Route path="/discover" element={<AuthGuard outlet={<Discover />} />} />
+          <Route path="/home" element={<AuthGuard outlet={<Home />} />} />
         </Routes>
         {user && <Navigation />}
       </BrowserRouter>
