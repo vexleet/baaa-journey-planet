@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 import './Login.styles.css';
-import GoogleLoginButton from '@/components/GoogleLoginButton/GoogleLoginButton.jsx';
-import TextField from '@/components/TextField/TextField.jsx';
+import GoogleLoginButton from '@/src/components/GoogleLoginButton/GoogleLoginButton.jsx';
+import TextField from '@/src/components/TextField/TextField.jsx';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
