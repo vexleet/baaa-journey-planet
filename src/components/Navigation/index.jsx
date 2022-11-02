@@ -5,7 +5,7 @@ const Navigation = () => {
   const navigationItems = [
     {
       linkTo: '/home',
-      icon: 'src/assets/icons/search.svg'
+      icon: '/icons/search.svg'
     },
     {
       linkTo: '/discover',
