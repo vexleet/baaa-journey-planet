@@ -9,14 +9,14 @@ import { getTrip } from '../../services/trip';
 
 const PlanTrip = () => {
   const tabValues = {
-    trips: 'trips',
-    pingboards: 'pingboards',
-    pings: 'pings'
+    morning: 'morning',
+    afternoon: 'afternoon',
+    evening: 'evening'
   };
 
   const { id } = useParams();
 
-  const [selectedTab, setSelectedTab] = useState(tabValues.trips);
+  const [selectedTab, setSelectedTab] = useState(tabValues.morning);
   const [droppedPinId, setDroppedPinId] = useState('');
   const [currentTrip, setCurrentTrip] = useState();
   const [updated, setUpdated] = useState(false);
@@ -39,10 +39,10 @@ const PlanTrip = () => {
     setDraggingsStyles({ opacity: 0 });
   };
   const onDragStart = () => setDraggingsStyles({ opacity: 0.2 });
-
+  console.log(currentTrip);
   return (
     <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
-      <Droppable droppableId="SomeId">
+      <Droppable droppableId="dropable_area_id">
         {(provided) => (
           <div
             {...provided.droppableProps}
@@ -66,13 +66,14 @@ const PlanTrip = () => {
               tabsPanelClassName="profile-tabs-panel-wrapper"
               onChange={setSelectedTab}
               value={selectedTab}>
-              <Tabs.Tab value={tabValues.trips} label="Morning"></Tabs.Tab>
-              <Tabs.Tab value={tabValues.pingboards} label="Afternoon"></Tabs.Tab>
-              <Tabs.Tab value={tabValues.pings} label="Evening"></Tabs.Tab>
+              <Tabs.Tab value={tabValues.morning} label="Morning"></Tabs.Tab>
+              <Tabs.Tab value={tabValues.afternoon} label="Afternoon"></Tabs.Tab>
+              <Tabs.Tab value={tabValues.evening} label="Evening"></Tabs.Tab>
 
-              <Tabs.TabPanel value={tabValues.trips}>
+              <Tabs.TabPanel value={tabValues.morning}>
                 <PinDragboxes
                   id="morning-pins"
+                  type="morning"
                   droppedId={droppedPinId}
                   tripId={id}
                   onDropUpdated={() => {
@@ -82,8 +83,32 @@ const PlanTrip = () => {
                   pins={currentTrip?.morningPins || []}
                 />
               </Tabs.TabPanel>
-              <Tabs.TabPanel value={tabValues.pingboards}></Tabs.TabPanel>
-              <Tabs.TabPanel value={tabValues.pings}></Tabs.TabPanel>
+              <Tabs.TabPanel value={tabValues.afternoon}>
+                <PinDragboxes
+                  id="morning-pins"
+                  type="afternoon"
+                  droppedId={droppedPinId}
+                  tripId={id}
+                  onDropUpdated={() => {
+                    setDroppedPinId('');
+                    setUpdated(false);
+                  }}
+                  pins={currentTrip?.afternoonPins || []}
+                />
+              </Tabs.TabPanel>
+              <Tabs.TabPanel value={tabValues.evening}>
+                <PinDragboxes
+                  id="morning-pins"
+                  type="evening"
+                  droppedId={droppedPinId}
+                  tripId={id}
+                  onDropUpdated={() => {
+                    setDroppedPinId('');
+                    setUpdated(false);
+                  }}
+                  pins={currentTrip?.eveningPins || []}
+                />
+              </Tabs.TabPanel>
             </Tabs>
             {provided.placeholder}
           </div>

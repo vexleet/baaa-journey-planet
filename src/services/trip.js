@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import {
   addDoc,
   collection,
@@ -65,8 +66,25 @@ export const getTrip = async (id) => {
 
     if (result.morning) {
       result.morningPins = [];
-      for (const pin of result.morning) {
-        result.morningPins.push(await getPin(pin));
+      result.afternoonPins = [];
+      result.eveningPins = [];
+
+      if (result.morning) {
+        for (const pin of result.morning) {
+          result.morningPins.push(await getPin(pin));
+        }
+      }
+
+      if (result.afternoon) {
+        for (const pin of result.afternoon) {
+          result.afternoonPins.push(await getPin(pin));
+        }
+      }
+
+      if (result.evening) {
+        for (const pin of result.evening) {
+          result.eveningPins.push(await getPin(pin));
+        }
       }
     }
 
@@ -77,13 +95,23 @@ export const getTrip = async (id) => {
   }
 };
 
-export const addPinToTrip = async (tripId, pinId, type) => {
+export const addPinToTrip = async (tripId, pinId, type, index, currentPins) => {
   const db = getFirestore();
-  console.log(type);
+
   const tripReference = doc(db, path, tripId);
 
+  currentPins = currentPins ? currentPins.map((x) => x.id) : [];
+  currentPins.splice(index, 0, pinId);
+
+  const postData =
+    type === 'morning'
+      ? { morning: currentPins }
+      : type === 'afternoon'
+      ? { afternoon: currentPins }
+      : { evening: currentPins };
+  console.log('daa', postData);
   try {
-    await updateDoc(tripReference, { morning: [pinId] });
+    await updateDoc(tripReference, postData);
 
     return true;
   } catch (e) {

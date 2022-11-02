@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { addPinToTrip } from '../../services/trip';
 
-const PinDragboxes = ({ pins, droppedId, onDropUpdated, tripId }) => {
+const PinDragboxes = ({ pins, droppedId, onDropUpdated, tripId, type }) => {
   const [globalCoords, setGlobalCoords] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -21,10 +21,12 @@ const PinDragboxes = ({ pins, droppedId, onDropUpdated, tripId }) => {
     };
   }, []);
 
-  const addPinToTripFunc = async () => await addPinToTrip(tripId, droppedId, 'morning');
+  const addPinToTripFunc = async (index) =>
+    await addPinToTrip(tripId, droppedId, type, index, pins);
 
   useEffect(() => {
     const firstDiv = document.getElementById('first-morning-droppable').getBoundingClientRect();
+    const secondDiv = document.getElementById('second-morning-droppable').getBoundingClientRect();
 
     if (droppedId) {
       if (
@@ -34,8 +36,18 @@ const PinDragboxes = ({ pins, droppedId, onDropUpdated, tripId }) => {
         globalCoords.y <= firstDiv.bottom
       ) {
         // Mouse/Finger is inside element.
-        addPinToTripFunc();
+        addPinToTripFunc(0);
       }
+
+      if (
+        globalCoords.x >= secondDiv.left &&
+        globalCoords.x <= secondDiv.right &&
+        globalCoords.y >= secondDiv.top &&
+        globalCoords.y <= secondDiv.bottom
+      ) {
+        addPinToTripFunc(1);
+      }
+
       onDropUpdated();
     }
   }, [droppedId]);
@@ -48,7 +60,7 @@ const PinDragboxes = ({ pins, droppedId, onDropUpdated, tripId }) => {
         </div>
       </div>
       <div className="dragbox">
-        <div className="dragbox-content">
+        <div className="dragbox-content" id="second-morning-droppable">
           {(pins.length > 1 && pins[1]?.name) || 'Drag here a pin'}
         </div>
       </div>
@@ -61,6 +73,7 @@ PinDragboxes.propTypes = {
   droppedId: PropTypes.any,
   onDropUpdated: PropTypes.any,
   tripId: PropTypes.string,
-  pins: PropTypes.array
+  pins: PropTypes.array,
+  type: PropTypes.string
 };
 export default PinDragboxes;

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import PinBoard from '../PinBoard';
 import './index.styles.css';
 import { getPingboards } from '../../services/pingboards';
 import { useTokenContext } from '@/context/TokenContext.jsx';
 import SmallCard from '@/components/SmallCard/index.jsx';
 import { Draggable } from 'react-beautiful-dnd';
+import Pingboard from '../Pingboard';
 
 const AvailablePinBoards = () => {
   const { user } = useTokenContext();
@@ -25,7 +25,7 @@ const AvailablePinBoards = () => {
       {pickedBoard === -1 &&
         availablePinboards.map((pinboard, index) => (
           <div onClick={() => setPickedBoard(index)} key={pinboard.id}>
-            <PinBoard title={pinboard.name} pins={pinboard.pins} />
+            <Pingboard name={pinboard.name} images={pinboard.pins.flatMap((x) => x.images)} />
           </div>
         ))}
 
@@ -50,17 +50,6 @@ const AvailablePinBoards = () => {
           ))}
         </div>
       )}
-
-      {/* <Draggable index={3} draggableId={'forth-id'}>
-        {(provided) => (
-          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-            <PinBoard
-              title={'Title 4'}
-              images={availablePinboards.slice(9, 12).map((x) => x.images[0])}
-            />
-          </div>
-        )}
-      </Draggable> */}
     </div>
   );
 };

@@ -8,6 +8,8 @@
 .profile-tabs {
   width: 100%;
   padding: 30px 0;
+  z-index: 200;
+  position: relative;
 }
 
 .profile-tabs-wrapper {
