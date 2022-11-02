@@ -9,7 +9,7 @@ const Navigation = () => {
     },
     {
       linkTo: '/discover',
-      icon: 'src/assets/icons/home.svg'
+      icon: '/icons/home.svg'
     },
     {
       linkTo: '/',
