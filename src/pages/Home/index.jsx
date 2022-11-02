@@ -41,13 +41,16 @@ const Home = () => {
   const getChildren = () => {
     return tripsList(trips);
   };
-
+  console.log('5', user);
   return (
     <>
       {loading === false ? (
-        <main>
-          <h1>{user.displayName}</h1>
-          {getChildren()}
+        <main className="home-page-wrapper">
+          <h1>Hello, {user.displayName.split(' ')[0]}!</h1>
+          <div className="home-show-trips">
+            <p>Created Trips</p>
+          </div>
+          <div className="home-render-trips">{getChildren()}</div>
         </main>
       ) : (
         <LoadingScreen />
