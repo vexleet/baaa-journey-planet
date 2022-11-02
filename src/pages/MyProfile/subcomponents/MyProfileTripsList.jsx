@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import SmallCard from '@/src/components/SmallCard/index.jsx';
-import CreateTrip from '@/src/components/CreateTrip/index.jsx';
+import SmallCard from '@/components/SmallCard/index.jsx';
+import CreateTrip from '@/components/CreateTrip/index.jsx';
 import { useState } from 'react';
-import MyProfileTabLayout from '@/src/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
+import MyProfileTabLayout from '@/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
 
 const MyProfileTripsList = ({ trips, onAddTrip }) => {
   const [loading, setLoading] = useState(false);

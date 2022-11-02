@@ -1,11 +1,11 @@
-import TextField from '@/src/components/TextField/TextField.jsx';
+import TextField from '@/components/TextField/TextField.jsx';
 import { useState } from 'react';
-import { addPingboard } from '@/src/services/pingboards.js';
-import { useTokenContext } from '@/src/context/TokenContext.jsx';
+import { addPingboard } from '@/services/pingboards.js';
+import { useTokenContext } from '@/context/TokenContext.jsx';
 import { toast } from 'react-toastify';
-import Toggler from '@/src/components/Toggler/index.jsx';
+import Toggler from '@/components/Toggler/index.jsx';
 import PropTypes from 'prop-types';
-import CreatePopupLayout from '@/src/layouts/CreatePopupLayout/index.jsx';
+import CreatePopupLayout from '@/layouts/CreatePopupLayout/index.jsx';
 
 const CreatePingboard = ({ isVisible, setIsVisible, handleSuccess }) => {
   const pingboardTogglerItems = ['Private', 'Public'];

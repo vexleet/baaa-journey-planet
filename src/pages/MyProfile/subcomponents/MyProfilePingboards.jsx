@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import CreatePingboard from '@/src/components/CreatePingboard/index.jsx';
+import CreatePingboard from '@/components/CreatePingboard/index.jsx';
 import PropTypes from 'prop-types';
-import Pingboard from '@/src/components/Pingboard/index.jsx';
-import MyProfileTabLayout from '@/src/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
+import Pingboard from '@/components/Pingboard/index.jsx';
+import MyProfileTabLayout from '@/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
 
 const MyProfilePingboards = ({ pingboards, onAddPingboards }) => {
   const [loading, setLoading] = useState(false);

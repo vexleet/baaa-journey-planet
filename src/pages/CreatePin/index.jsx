@@ -1,11 +1,11 @@
-import TextField from '@/src/components/TextField/TextField.jsx';
+import TextField from '@/components/TextField/TextField.jsx';
 import { useState } from 'react';
-import { addPin } from '@/src/services/pins.js';
+import { addPin } from '@/services/pins.js';
 import { toast } from 'react-toastify';
-import { getImages } from '@/src/utils/getImages.js';
-import CreatePopupLayout from '@/src/layouts/CreatePopupLayout/index.jsx';
+import { getImages } from '@/utils/getImages.js';
+import CreatePopupLayout from '@/layouts/CreatePopupLayout/index.jsx';
 import PropTypes from 'prop-types';
-import ChoosePicture from '@/src/components/ChoosePicture/index.jsx';
+import ChoosePicture from '@/components/ChoosePicture/index.jsx';
 
 const CreatePin = ({ isVisible, setIsVisible, handleSuccess }) => {
   const [pinName, setPinName] = useState('');

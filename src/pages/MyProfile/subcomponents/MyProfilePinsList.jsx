@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import SmallCard from '@/src/components/SmallCard/index.jsx';
-import MyProfileTabLayout from '@/src/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
+import SmallCard from '@/components/SmallCard/index.jsx';
+import MyProfileTabLayout from '@/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
 import { useState } from 'react';
-import CreatePin from '@/src/pages/CreatePin/index.jsx';
+import CreatePin from '@/pages/CreatePin/index.jsx';
 
 const MyProfilePinsList = ({ pins, onAddPin }) => {
   const [loading, setLoading] = useState(false);

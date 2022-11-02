@@ -13,7 +13,7 @@ const EmptyPageState = ({ text, buttonLabel, onButtonClick }) => {
         textAlign: 'center'
       }}>
       {/*  TODO ADD FOR EACH COMPONENT WHEN PLAMEN MAKES THE PINGBOARD COMPONENT*/}
-      <img src="/images/empty-state.svg" style={{ width: '100%', height: 200 }} />
+      <img src="src/assets/images/empty-state.svg" style={{ width: '100%', height: 200 }} />
       <p className="text" style={{ marginTop: 15 }}>
         {text}
       </p>

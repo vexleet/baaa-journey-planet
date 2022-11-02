@@ -1,4 +1,4 @@
-import PopupDialog from '@/src/components/PopupDialog/index.jsx';
+import PopupDialog from '@/components/PopupDialog/index.jsx';
 import './index.css';
 import PropTypes from 'prop-types';
 

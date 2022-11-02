@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { Children } from 'react';
 import './index.styles.css';
-import TabPanel from '@/src/components/Tabs/TabPanel.jsx';
-import Tab from '@/src/components/Tabs/Tab.jsx';
+import TabPanel from '@/components/Tabs/TabPanel.jsx';
+import Tab from '@/components/Tabs/Tab.jsx';
 
 const Tabs = ({ children, className, tabsClassName, value, tabsPanelClassName, onChange }) => {
   const tabIsSelected = (tabValue) => {
@@ -29,12 +29,12 @@ const Tabs = ({ children, className, tabsClassName, value, tabsPanelClassName, o
     return propValue === value ? child : null;
   };
 
-  const tabsComponents = Children.map(children, (child) => {
-    return child.props.label ? mapTabs(child) : null;
-  });
+  const tabsComponents = Children.map(children, (child) =>
+    child.type.name === 'Tab' ? mapTabs(child) : null
+  );
 
   const tabPanelComponents = Children.map(children, (child) =>
-    !child.props.label ? mapTabPanels(child) : null
+    child.type.name === 'TabPanel' ? mapTabPanels(child) : null
   );
 
   return (

@@ -1,5 +1,5 @@
 import { collection, doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
-import firebase from '@/src/firebase.js';
+import firebase from '@/firebase.js';
 
 export const getCategories = async () => {
   const db = getFirestore(firebase);

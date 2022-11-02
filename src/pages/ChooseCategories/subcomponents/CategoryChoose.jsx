@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Chip from '@/src/components/Chip/Chip.jsx';
+import Chip from '@/components/Chip/Chip.jsx';
 import { useEffect, useState } from 'react';
 import './CategoryChoose.styles.css';
 

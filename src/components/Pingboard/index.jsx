@@ -39,7 +39,7 @@ const Pingboard = ({ name, images }) => {
       {firstThreeImages.length === 0 ? (
         <div>
           <img
-            src="/images/empty-pingboard.jpg"
+            src="src/assets/images/empty-pingboard.jpg"
             style={{
               borderRadius: 10,
               objectFit: 'cover',

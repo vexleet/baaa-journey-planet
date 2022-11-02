@@ -1,5 +1,5 @@
 import { addDoc, collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
-import firebase from '@/src/firebase.js';
+import firebase from '@/firebase.js';
 
 const path = 'trips';
 

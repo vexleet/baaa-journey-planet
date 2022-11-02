@@ -1,10 +1,11 @@
+//Made by Valentinas Markulis
 import SearchBar from '../../components/SearchBar';
-import { getPins } from '@/src/services/pins.js';
+import { getPins } from './services/pins.js';
 import { useEffect, useState } from 'react';
 import Toggler from '../../components/Toggler';
-import PinCard from '@/src/components/PinCard/index.jsx';
+import PinCard from './components/PinCard/index.jsx';
 import TextField from '../../components/TextField/TextField';
-import LoadingScreen from '@/components/LoadingScreen/index.jsx';
+import LoadingScreen from '../components/LoadingScreen/index.jsx';
 import './index.styles.css';
 
 const categories = ['restaurant', 'bar'];

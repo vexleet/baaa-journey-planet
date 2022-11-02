@@ -1,4 +1,4 @@
-import NavigationItem from '@/src/components/Navigation/NavigationItem.jsx';
+import NavigationItem from '@/components/Navigation/NavigationItem.jsx';
 import './index.styles.css';
 
 const Navigation = () => {
@@ -13,11 +13,11 @@ const Navigation = () => {
     },
     {
       linkTo: '/',
-      icon: '/icons/send.svg'
+      icon: 'src/assets/icons/send.svg'
     },
     {
       linkTo: '/profile',
-      icon: '/icons/user.svg'
+      icon: 'src/assets/icons/user.svg'
     }
   ];
   return (
