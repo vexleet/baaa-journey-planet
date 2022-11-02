@@ -1,4 +1,4 @@
-//Made by Valentinas Marlulis
+//Made By Valentinas Markulis
 import './index.styles.css';
 import { useTokenContext } from '@/context/TokenContext.jsx';
 import { useState, useEffect } from 'react';
