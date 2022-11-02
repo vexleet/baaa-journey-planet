@@ -78,19 +78,27 @@ const Discover = () => {
             />
           </div>
 
-          {displayPar === displayTogglerItems[1] && (
-            <div>
-              <h2>COMING SOON!</h2>
-              <p>If you want to be up-to-date with new features coming, get notified!</p>
-              <TextField
-                id="notify"
-                className="textfield-emailNotify"
-                placeholder={'email@mail.com'}
-                type="email"
-              />
-              <button>Notify</button>
-            </div>
-          )}
+
+      {displayPar === displayTogglerItems[1] && (
+        <div className="comingsoon-wrapper">
+          <div className="comingsoon-header">
+            <img src="../src/assets/icons/confettileft.svg" alt="Confetti Celebration Left" />
+            <h2>COMING SOON!</h2>
+            <img src="../src/assets/icons/confettiright.svg" alt="Confetti Celebration Right" />
+          </div>
+          <p>If you want to be up-to-date with new features coming, get notified!</p>
+          <TextField
+            id="notify"
+            className="textfield-emailNotify"
+            placeholder={'email@mail.com'}
+            type="text"
+          />
+          <div className="notifyme-button">
+            <button>Notify</button>
+          </div>
+        </div>
+      )}
+
 
           {displayPar === displayTogglerItems[0] && filteredPins.length > 0 && (
             <div>
