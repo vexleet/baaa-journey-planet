@@ -15,7 +15,9 @@ const PingBoardImages = ({ images }) => {
           src={image}
           width="100%"
           style={{
-            width: `calc(100% / ${images.length})`,
+            width: `calc(100% / ${images.length} + ${
+              index === 0 ? 10 * (images.length - 1) : 0
+            }px)`,
             borderRadius: index > 0 ? '0 10px 10px 0' : 10,
             marginLeft: index > 0 ? -10 : 0,
             objectFit: 'cover',

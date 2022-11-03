@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './index.styles.css';
 import { getPingboards } from '../../services/pingboards';
-import { useTokenContext } from '@/context/TokenContext.jsx';
-import SmallCard from '@/components/SmallCard/index.jsx';
+import { useTokenContext } from '@/src/context/TokenContext.jsx';
+import SmallCard from '@/src/components/SmallCard/index.jsx';
 import { Draggable } from 'react-beautiful-dnd';
 import Pingboard from '../Pingboard';
 

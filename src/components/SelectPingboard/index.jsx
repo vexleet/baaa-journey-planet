@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { addPinToPingboard, getPingboards } from '@/services/pingboards.js';
-import { useTokenContext } from '@/context/TokenContext.jsx';
-import PopupDialog from '@/components/PopupDialog/index.jsx';
+import { addPinToPingboard, getPingboards } from '@/src/services/pingboards.js';
+import { useTokenContext } from '@/src/context/TokenContext.jsx';
+import PopupDialog from '@/src/components/PopupDialog/index.jsx';
 import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
-import Pingboard from '@/components/Pingboard/index.jsx';
-import LoadingScreen from '@/components/LoadingScreen/index.jsx';
+import Pingboard from '@/src/components/Pingboard/index.jsx';
+import LoadingScreen from '@/src/components/LoadingScreen/index.jsx';
 import { toast } from 'react-toastify';
 
 const SelectPingBoardLoading = () => {
@@ -89,26 +88,23 @@ const SelectPingboard = ({ children, pin }) => {
     <>
       <div onClick={togglePopup}>{children}</div>
 
-      {createPortal(
-        <PopupDialog isOpen={selectPingboardIsOpen} onClickOutside={togglePopup}>
-          {isLoading ? (
-            <SelectPingBoardLoading />
-          ) : (
-            <div
-              style={{
-                height: '70vh',
-                overflow: 'scroll',
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 20,
-                flexWrap: 'wrap'
-              }}>
-              {renderPingboardItems()}
-            </div>
-          )}
-        </PopupDialog>,
-        document.querySelector('#root')
-      )}
+      <PopupDialog isOpen={selectPingboardIsOpen} onClickOutside={togglePopup}>
+        {isLoading ? (
+          <SelectPingBoardLoading />
+        ) : (
+          <div
+            style={{
+              height: '70vh',
+              overflow: 'scroll',
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 20,
+              flexWrap: 'wrap'
+            }}>
+            {renderPingboardItems()}
+          </div>
+        )}
+      </PopupDialog>
     </>
   );
 };

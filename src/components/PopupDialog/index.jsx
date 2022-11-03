@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import './index.styles.css';
+import { createPortal } from 'react-dom';
 
 const PopupDialog = ({ children, className, isOpen, onClickOutside }) => {
   const hiddenClassName = () => {
@@ -12,11 +13,12 @@ const PopupDialog = ({ children, className, isOpen, onClickOutside }) => {
     }
   };
 
-  return (
+  return createPortal(
     <div className={`${hiddenClassName()} popup-dialog ${className}`}>
       <div className="popup-dialog-background" onClick={handleClickOutside}></div>
       <div className="popup-dialog-content">{children}</div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
