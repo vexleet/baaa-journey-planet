@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { useTokenContext } from '@/context/TokenContext.jsx';
-import AuthGuard from '@/guards/AuthGuard.jsx';
-import Login from '@/pages/Login/Login.jsx';
-import GuestGuard from '@/guards/GuestGuard.jsx';
-import ChooseCategories from '@/pages/ChooseCategories/ChooseCategories.jsx';
-import Register from '@/pages/Register/Register.jsx';
+import { useTokenContext } from '@/src/context/TokenContext.jsx';
+import AuthGuard from '@/src/guards/AuthGuard.jsx';
+import Login from '@/src/pages/Login/Login.jsx';
+import GuestGuard from '@/src/guards/GuestGuard.jsx';
+import ChooseCategories from '@/src/pages/ChooseCategories/ChooseCategories.jsx';
+import Register from '@/src/pages/Register/Register.jsx';
 import PinsList from './pages/PinsList';
 import Discover from './pages/Discover';
 import LoadingScreen from './components/LoadingScreen';
@@ -15,6 +15,7 @@ import PlanTrip from './pages/PlanTrip';
 import CreatePin from './pages/CreatePin';
 import Navigation from '@/components/Navigation';
 import MyProfile from '@/pages/MyProfile/index.jsx';
+import Home from './pages/Home';
 
 function App() {
   const { user, isInitialized } = useTokenContext();
@@ -37,6 +38,7 @@ function App() {
           <Route path="/plan-trip/:id" element={<AuthGuard outlet={<PlanTrip />} />} />
           <Route path="/profile" element={<AuthGuard outlet={<MyProfile />} />} />
           <Route path="/discover" element={<AuthGuard outlet={<Discover />} />} />
+          <Route path="/home" element={<AuthGuard outlet={<Home />} />} />
         </Routes>
         {user && <Navigation />}
       </BrowserRouter>

@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useTokenContext } from '@/context/TokenContext.jsx';
+import { useTokenContext } from '@/src/context/TokenContext.jsx';
 
 const AuthGuard = ({ outlet }) => {
   const { user } = useTokenContext();

@@ -1,0 +1,90 @@
+/*Dori*/
+
+.discover-wrapper {
+  background-image: linear-gradient(white, var(--background));
+  background-repeat: repeat-x;
+  background-size: 100vh;
+  background-attachment: fixed;
+}
+
+.discover-toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-title {
+  font-size: 5px;
+}
+
+.filterBtn {
+  background-color: transparent;
+}
+.searchHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-left: 15vw;
+}
+.filterBtn img {
+  justify-content: center;
+  align-items: center;
+}
+
+.categoryBtn {
+  background-color: transparent;
+}
+
+.dataResult {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  margin: 10px 5px 20px 10px;
+  padding-bottom: 5px;
+}
+
+.comingsoon-header img {
+  height: 70px;
+}
+
+.comingsoon-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.comingsoon-header h2 {
+  padding: 0 10px;
+  font-size: 20px;
+}
+
+.comingsoon-wrapper p {
+  margin: 45px 0 40px 0;
+  text-align: center;
+}
+
+.textfield-input {
+  width: 250px;
+}
+
+.searchInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comingsoon-wrapper button {
+  background-color: var(--orange);
+  box-shadow: 3px 5px 7px var(--shadow);
+}
+
+.notifyme-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}

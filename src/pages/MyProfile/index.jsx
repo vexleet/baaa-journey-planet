@@ -1,14 +1,16 @@
-import Tabs from '@/components/Tabs/index.jsx';
+//Kris
+
+import Tabs from '@/src/components/Tabs/index.jsx';
 import { useEffect, useState } from 'react';
-import { useTokenContext } from '@/context/TokenContext.jsx';
+import { useTokenContext } from '@/src/context/TokenContext.jsx';
 import './index.styles.css';
-import { getPins } from '@/services/pins.js';
-import { getPingboards } from '@/services/pingboards.js';
-import MyProfilePinsList from '@/pages/MyProfile/subcomponents/MyProfilePinsList.jsx';
-import MyProfilePingboards from '@/pages/MyProfile/subcomponents/MyProfilePingboards.jsx';
-import LoadingScreen from '@/components/LoadingScreen/index.jsx';
-import MyProfileTripsList from '@/pages/MyProfile/subcomponents/MyProfileTripsList.jsx';
-import { getTrips } from '@/services/trip.js';
+import { getPins } from '@/src/services/pins.js';
+import { getPingboards } from '@/src/services/pingboards.js';
+import MyProfilePinsList from '@/src/pages/MyProfile/subcomponents/MyProfilePinsList.jsx';
+import MyProfilePingboards from '@/src/pages/MyProfile/subcomponents/MyProfilePingboards.jsx';
+import LoadingScreen from '@/src/components/LoadingScreen/index.jsx';
+import MyProfileTripsList from '@/src/pages/MyProfile/subcomponents/MyProfileTripsList.jsx';
+import { getTrips } from '@/src/services/trip.js';
 
 const MyProfile = () => {
   const { user } = useTokenContext();
@@ -69,7 +71,7 @@ const MyProfile = () => {
             flexDirection: 'column'
           }}>
           <div style={{ textAlign: 'center', marginBottom: 25 }} className="text profile-section">
-            <img src="src/assets/images/default-user.svg" width={85} height={85} />
+            <img src="/images/default-user.svg" width={85} height={85} />
             <p>{user.displayName}</p>
           </div>
 

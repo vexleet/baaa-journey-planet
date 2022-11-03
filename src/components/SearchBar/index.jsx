@@ -1,3 +1,4 @@
+//Made By Valentinas Markulis
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '../TextField/TextField';
@@ -9,7 +10,7 @@ function SearchBar({ placeholder, originalPins, setFilteredPins, searchInput, se
     setSearchInput(wordEntered);
 
     const newFilter = originalPins.filter((value) => {
-      return value.name.toLowerCase().includes(wordEntered.toLowerCase());
+      return value.name?.toLowerCase().includes(wordEntered.toLowerCase());
     });
 
     setFilteredPins(newFilter);
@@ -30,7 +31,7 @@ function SearchBar({ placeholder, originalPins, setFilteredPins, searchInput, se
           onClear={clearInput}
           value={searchInput}
           placeholder={placeholder}
-          type="search"
+          type="text"
         />
       </div>
     </div>

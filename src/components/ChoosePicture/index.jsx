@@ -16,7 +16,7 @@ const ChoosePicture = ({ images, handleImageChange, isMultiple }) => {
       return <img src={URL.createObjectURL(images[0])} style={{ width: '100%', height: '100%' }} />;
     }
 
-    return <img src="src/assets/icons/image.svg" width={50} height={50} />;
+    return <img src="/icons/image.svg" width={50} height={50} />;
   };
 
   return (

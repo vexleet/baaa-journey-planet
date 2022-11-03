@@ -1,5 +1,5 @@
 import { collection, getFirestore, addDoc, getDocs, doc, getDoc } from 'firebase/firestore';
-import firebase from '@/firebase.js';
+import firebase from '@/src/firebase.js';
 
 const path = 'pins';
 
