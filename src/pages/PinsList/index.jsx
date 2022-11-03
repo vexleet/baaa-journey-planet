@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { getPins } from '@/services/pins.js';
-import PinCard from '../../components/PinCard';
+import { getPins } from '@/src/services/pins.js';
+import PinCard from '@/src/PinCard';
 
 const PinsList = () => {
   const [pins, setPins] = useState([]);

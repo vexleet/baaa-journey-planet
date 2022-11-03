@@ -9,8 +9,8 @@ import {
   query,
   where
 } from 'firebase/firestore';
-import firebase from '@/firebase.js';
-import { getPin } from '@/services/pins.js';
+import firebase from '@/src/firebase.js';
+import { getPin } from '@/src/services/pins.js';
 
 const path = 'pingboards';
 

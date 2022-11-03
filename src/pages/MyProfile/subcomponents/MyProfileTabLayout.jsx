@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import LoadingScreen from '@/components/LoadingScreen/index.jsx';
-import EmptyPageState from '@/components/EmptyPageState/index.jsx';
-import SearchBar from '@/components/SearchBar/index.jsx';
-import Toggler from '@/components/Toggler/index.jsx';
+import LoadingScreen from '@/src/components/LoadingScreen/index.jsx';
+import EmptyPageState from '@/src/components/EmptyPageState/index.jsx';
+import SearchBar from '@/src/components/SearchBar/index.jsx';
+import Toggler from '@/src/components/Toggler/index.jsx';
 import PropTypes from 'prop-types';
 
 const MyProfileTabLayout = ({ renderChildren, items, handleOpenAddItem, loading }) => {

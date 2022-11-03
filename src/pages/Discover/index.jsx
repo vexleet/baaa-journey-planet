@@ -1,7 +1,12 @@
-import SearchBar from '../../components/SearchBar';
-import { getPins } from '@/services/pins.js';
+//Made By Valentinas Markulis
+import SearchBar from '@/src/components/SearchBar';
+import { getPins } from '@/src/services/pins.js';
 import { useEffect, useState } from 'react';
-import PinCard from '@/components/PinCard/index.jsx';
+import Toggler from '@/src/Toggler';
+import PinCard from '@/src/components/PinCard/index.jsx';
+import TextField from '@/src/TextField/TextField';
+import LoadingScreen from '@/src/components/LoadingScreen/index.jsx';
+import './index.styles.css';
 
 const categories = ['restaurant', 'bar'];
 
@@ -9,9 +14,14 @@ const Discover = () => {
   const [originalPins, setOriginalPins] = useState([]);
   const [filteredPins, setFilteredPins] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const displayTogglerItems = ['Pings', 'People'];
+  const [displayPar, setDisplayPar] = useState(displayTogglerItems[0]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const pinsResponse = await getPins();
 
       if (pinsResponse === false) {
@@ -20,42 +30,118 @@ const Discover = () => {
         setOriginalPins(pinsResponse);
         setFilteredPins(pinsResponse);
       }
+      setLoading(false);
     })();
   }, []);
 
-  const renderFilteredPins = (category) => {
-    return [...filteredPins]
-      .filter((val) => val.category == category)
-      .map((value, i) => {
-        return (
-          <PinCard key={i} image={value.images[0]} name={value.name} location={value.location} />
-        );
-      });
+  const renderFilteredPins = (category, styles) => {
+    return (
+      <div style={{ ...styles }}>
+        {[...filteredPins]
+          .filter((val) => val.category == category)
+          .map((value, i) => {
+            return (
+              <PinCard
+                key={i}
+                image={value.images[0]}
+                name={value.name}
+                location={value.location}
+              />
+            );
+          })}
+      </div>
+    );
   };
 
   return (
-    <main>
-      <SearchBar
-        placeholder="Search..."
-        originalPins={originalPins}
-        setFilteredPins={setFilteredPins}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-      />
+    <>
+      {loading === false ? (
+        <main className="discover-wrapper">
+          <div className="searchHeader">
+            <SearchBar
+              placeholder="Search..."
+              originalPins={originalPins}
+              setFilteredPins={setFilteredPins}
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+            />
 
-      {filteredPins.length > 0 && (
-        <div>
-          {categories.map((category, i) => {
-            return (
-              <div key={i} style={{ height: '100%' }}>
-                {!searchInput && <h2>{category}</h2>}
-                <div className="dataResult">{renderFilteredPins(category)}</div>
+            <button className="filterBtn">
+              <img src="../src/assets/icons/filter.svg"></img>
+            </button>
+          </div>
+          <div className="discover-toggler">
+            <Toggler
+              items={displayTogglerItems}
+              setActiveItem={setDisplayPar}
+              activeItem={displayPar}
+            />
+          </div>
+
+          {displayPar === displayTogglerItems[1] && (
+            <div className="comingsoon-wrapper">
+              <div className="comingsoon-header">
+                <img src="/icons/confettileft.svg" alt="Confetti Celebration Left" />
+                <h2>COMING SOON!</h2>
+                <img src="/icons/confettiright.svg" alt="Confetti Celebration Right" />
               </div>
-            );
-          })}
-        </div>
+              <p>If you want to be up-to-date with new features coming, get notified!</p>
+              <TextField
+                id="notify"
+                className="textfield-emailNotify"
+                placeholder={'email@mail.com'}
+                type="text"
+              />
+              <div className="notifyme-button">
+                <button>Notify</button>
+              </div>
+            </div>
+          )}
+
+          {displayPar === displayTogglerItems[0] && filteredPins.length > 0 && (
+            <div>
+              {!selectedCategory ? (
+                categories.map((category, i) => (
+                  <div key={i} style={{ height: '100%' }}>
+                    {!searchInput && (
+                      <button
+                        className="categoryBtn text"
+                        onClick={() => setSelectedCategory(categories[i])}>
+                        {category}
+                      </button>
+                    )}
+                    {searchInput ? (
+                      <div className="dataResult">{renderFilteredPins(category, {})}</div>
+                    ) : (
+                      <div className="dataResult">
+                        {renderFilteredPins(category, {
+                          display: 'flex',
+                          flexDirection: 'row',
+                          flexWrap: 'no-wrap'
+                        })}
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <div style={{ height: '100%' }}>
+                  {!searchInput && (
+                    <button
+                      className="categoryBtn text"
+                      onClick={() => setSelectedCategory(selectedCategory)}>
+                      {selectedCategory}
+                    </button>
+                  )}
+                  <div className="dataResult">{renderFilteredPins(selectedCategory, {})}</div>
+                </div>
+              )}
+            </div>
+          )}
+        </main>
+      ) : (
+        <LoadingScreen />
       )}
-    </main>
+    </>
   );
 };
 
