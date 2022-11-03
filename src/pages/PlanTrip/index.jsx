@@ -21,12 +21,15 @@ const PlanTrip = () => {
   const [currentTrip, setCurrentTrip] = useState();
   const [updated, setUpdated] = useState(false);
   const [draggingStlyles, setDraggingsStyles] = useState({ opacity: 0 });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTrip = async () => {
+      setLoading(true);
       const result = await getTrip(id);
       setCurrentTrip(result);
       setUpdated(true);
+      setLoading(false);
     };
 
     if (id && !updated) {
@@ -36,6 +39,7 @@ const PlanTrip = () => {
 
   const onDragEnd = (result) => {
     setDroppedPinId(result.draggableId);
+    setLoading(true);
     setDraggingsStyles({ opacity: 0 });
   };
   const onDragStart = () => setDraggingsStyles({ opacity: 0.2 });
@@ -56,6 +60,17 @@ const PlanTrip = () => {
                 position: 'absolute',
                 zIndex: 1,
                 ...draggingStlyles
+              }}
+            />
+
+            <div
+              style={{
+                height: '100vh',
+                width: '100vw',
+                background: 'black',
+                position: 'absolute',
+                zIndex: 1,
+                opacity: loading ? 0.2 : 0
               }}
             />
             <AvailablePinBoards />

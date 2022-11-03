@@ -21,12 +21,14 @@ const PinDragboxes = ({ pins, droppedId, onDropUpdated, tripId, type }) => {
     };
   }, []);
 
-  const addPinToTripFunc = async (index) =>
+  const addPinToTripFunc = async (index) => {
     await addPinToTrip(tripId, droppedId, type, index, pins);
+    onDropUpdated();
+  };
 
   useEffect(() => {
-    const firstDiv = document.getElementById('first-morning-droppable').getBoundingClientRect();
-    const secondDiv = document.getElementById('second-morning-droppable').getBoundingClientRect();
+    const firstDiv = document.getElementById('first-morning-droppable')?.getBoundingClientRect();
+    const secondDiv = document.getElementById('second-morning-droppable')?.getBoundingClientRect();
 
     if (droppedId) {
       if (
@@ -47,8 +49,6 @@ const PinDragboxes = ({ pins, droppedId, onDropUpdated, tripId, type }) => {
       ) {
         addPinToTripFunc(1);
       }
-
-      onDropUpdated();
     }
   }, [droppedId]);
 
