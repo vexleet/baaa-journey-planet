@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import SmallCard from '@/src/components/SmallCard/index.jsx';
 import CreateTrip from '@/src/components/CreateTrip/index.jsx';
 import { useState } from 'react';
-import MyProfileTabLayout from '@/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
+import MyProfileTabLayout from '@/src/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
 import { Link } from 'react-router-dom';
 
 const MyProfileTripsList = ({ trips, onAddTrip }) => {
@@ -15,7 +15,7 @@ const MyProfileTripsList = ({ trips, onAddTrip }) => {
       <Link key={trip.id + index} to={`/plan-trip/${trip.id}`} style={{ textDecoration: 'none' }}>
         <SmallCard
           image={trip.image}
-          title={trip.country}
+          title={trip.name}
           subtitle={`${trip.startDate}\n${trip.endDate}`}
         />
       </Link>

@@ -20,10 +20,13 @@ const CreatePin = ({ isVisible, setIsVisible, handleSuccess }) => {
     const images = await getImages(pinImages);
 
     const response = await addPin({
-      pinName: pinName,
-      pinLocation: pinLocation,
-      pinDescription: pinDescription,
-      images
+      name: pinName,
+      location: pinLocation,
+      description: pinDescription,
+      images,
+      category: 'restaurant',
+      coordinates: [56.162, 10.219],
+      address: 'Aarhus, Denmark'
     });
 
     if (response) {

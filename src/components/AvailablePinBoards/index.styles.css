@@ -13,4 +13,14 @@
   border-bottom-right-radius: 40px;
   box-shadow: 1px 3px 6px var(--shadow);
   height: 500px;
+  overflow: scroll;
+}
+
+.picked-pins-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 30px;
+  height: min-content;
+  gap: 20px;
 }

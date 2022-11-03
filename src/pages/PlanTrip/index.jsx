@@ -1,5 +1,5 @@
 import AvailablePinBoards from '../../components/AvailablePinBoards';
-import Tabs from '@/components/Tabs/index.jsx';
+import Tabs from '@/src/components/Tabs/index.jsx';
 import { useState } from 'react';
 import PinDragboxes from '../../components/PinDragboxes';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';

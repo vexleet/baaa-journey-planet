@@ -2,9 +2,9 @@
 import SearchBar from '@/src/components/SearchBar';
 import { getPins } from '@/src/services/pins.js';
 import { useEffect, useState } from 'react';
-import Toggler from '@/src/Toggler';
+import Toggler from '@/src/components/Toggler';
 import PinCard from '@/src/components/PinCard/index.jsx';
-import TextField from '@/src/TextField/TextField';
+import TextField from '@/src/components/TextField/TextField';
 import LoadingScreen from '@/src/components/LoadingScreen/index.jsx';
 import './index.styles.css';
 
@@ -67,7 +67,7 @@ const Discover = () => {
             />
 
             <button className="filterBtn">
-              <img src="../src/assets/icons/filter.svg"></img>
+              <img src="/icons/filter.svg"></img>
             </button>
           </div>
           <div className="discover-toggler">

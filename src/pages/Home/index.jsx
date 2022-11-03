@@ -3,7 +3,7 @@ import './index.styles.css';
 import { useTokenContext } from '@/src/context/TokenContext.jsx';
 import { useState, useEffect } from 'react';
 import { getTrips } from '@/src/services/trip.js';
-import LoadingScreen from '@/src/LoadingScreen';
+import LoadingScreen from '@/src/components/LoadingScreen';
 import SmallCard from '@/src/components/SmallCard/index.jsx';
 
 const Home = () => {
