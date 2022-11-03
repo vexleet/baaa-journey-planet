@@ -9,9 +9,7 @@ import TokenProvider from '@/src/context/TokenContext.jsx';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <TokenProvider>
-      <App />
-    </TokenProvider>
-  </React.StrictMode>
+  <TokenProvider>
+    <App />
+  </TokenProvider>
 );

@@ -10,10 +10,12 @@ import ChooseCategories from '@/src/pages/ChooseCategories/ChooseCategories.jsx'
 import Register from '@/src/pages/Register/Register.jsx';
 import PinsList from './pages/PinsList';
 import Discover from './pages/Discover';
-import LoadingScreen from '@/src/LoadingScreen';
+import LoadingScreen from './components/LoadingScreen';
+import PlanTrip from './pages/PlanTrip';
+import CreatePin from './pages/CreatePin';
+import Navigation from '@/components/Navigation';
+import MyProfile from '@/pages/MyProfile/index.jsx';
 import Home from './pages/Home';
-import Navigation from '@/src/components/Navigation';
-import MyProfile from '@/src/pages/MyProfile/index.jsx';
 
 function App() {
   const { user, isInitialized } = useTokenContext();
@@ -32,6 +34,8 @@ function App() {
           <Route path="/login" element={<GuestGuard outlet={<Login />} />} />
           <Route path="/register" element={<GuestGuard outlet={<Register />} />} />
           <Route path="/choose-categories" element={<AuthGuard outlet={<ChooseCategories />} />} />
+          <Route path="/create-pin" element={<AuthGuard outlet={<CreatePin />} />} />
+          <Route path="/plan-trip/:id" element={<AuthGuard outlet={<PlanTrip />} />} />
           <Route path="/profile" element={<AuthGuard outlet={<MyProfile />} />} />
           <Route path="/discover" element={<AuthGuard outlet={<Discover />} />} />
           <Route path="/home" element={<AuthGuard outlet={<Home />} />} />

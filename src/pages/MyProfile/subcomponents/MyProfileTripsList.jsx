@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import SmallCard from '@/src/components/SmallCard/index.jsx';
 import CreateTrip from '@/src/components/CreateTrip/index.jsx';
 import { useState } from 'react';
-import MyProfileTabLayout from '@/src/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
+import MyProfileTabLayout from '@/pages/MyProfile/subcomponents/MyProfileTabLayout.jsx';
+import { Link } from 'react-router-dom';
 
 const MyProfileTripsList = ({ trips, onAddTrip }) => {
   const [loading, setLoading] = useState(false);
@@ -11,12 +12,13 @@ const MyProfileTripsList = ({ trips, onAddTrip }) => {
 
   const tripsList = () => {
     return trips.map((trip, index) => (
-      <SmallCard
-        image={trip.image}
-        title={trip.country}
-        subtitle={`${trip.startDate}\n${trip.endDate}`}
-        key={trip.id + index}
-      />
+      <Link key={trip.id + index} to={`/plan-trip/${trip.id}`} style={{ textDecoration: 'none' }}>
+        <SmallCard
+          image={trip.image}
+          title={trip.country}
+          subtitle={`${trip.startDate}\n${trip.endDate}`}
+        />
+      </Link>
     ));
   };
 
